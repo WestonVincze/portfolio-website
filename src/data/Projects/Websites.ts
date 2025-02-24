@@ -35,6 +35,7 @@ export const Websites: ProjectDetails[] = [
     year: "2024",
     skills: [
       "NextJS",
+      "React",
       "TypeScript",
       "JavaScript",
       "HTML",
@@ -247,7 +248,15 @@ export const Websites: ProjectDetails[] = [
     id: "portfolio-website-2019",
     year: "2019",
     status: "complete",
-    skills: ["NextJS", "JavaScript", "HTML", "CSS", "Trello", "Illustrator"],
+    skills: [
+      "NextJS",
+      "React",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Trello",
+      "Illustrator",
+    ],
     subheading: "Original Version",
     description:
       "A website I created as an avenue to learn NextJS, GitHub pages, and publicly host a portfolio of my work to market myself as a freelance web developer. This was the original concept of my current website.",
