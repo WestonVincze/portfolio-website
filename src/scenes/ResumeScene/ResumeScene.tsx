@@ -7,12 +7,22 @@ import { SkillStickers } from "@components/SkillStickers";
 import { StickyNote } from "@components/StickyNote";
 import { HighlightedHeading } from "@components/HighlightedHeading";
 import { useInViewAnimation } from "@hooks/useInViewAnimation";
+import { trackEvent } from "src/utils/analytics";
 
 export const ResumeScene = () => {
   const [ref, animatedStyles, AnimatedHeader] = useInViewAnimation(
     "header",
     "shrink",
   );
+
+  const handleButtonClick = () => {
+    trackEvent({
+      event_category: "engagement",
+      event_action: "button_click",
+      event_label: "download",
+    });
+  };
+
   return (
     <Container>
       <article className={styles.resume}>
@@ -21,7 +31,11 @@ export const ResumeScene = () => {
           style={animatedStyles}
           className={styles.stickyNotes}
         >
-          <a href="/resumes/WestonVinczeResume-Concise.pdf" target="_blank">
+          <a
+            href="/resumes/WestonVinczeResume-Concise.pdf"
+            onClick={handleButtonClick}
+            target="_blank"
+          >
             <StickyNote icon="PDF" text="Single-Page" />
           </a>
           <a href="/resumes/WestonVinczeResume-Detailed.pdf" target="_blank">
