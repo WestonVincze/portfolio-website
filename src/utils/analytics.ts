@@ -12,10 +12,8 @@ export type EventCategory =
 
 export type EventAction =
   | "button_click"
-  | "form_submit"
   | "page_view"
   | "download"
-  | "video_play"
   | "link_click";
 
 export interface AnalyticsEvent {
@@ -23,8 +21,8 @@ export interface AnalyticsEvent {
   event_action: EventAction;
   event_label?: string;
   value?: number;
-  utm_source?: string;
-  utm_medium?: string;
+  utm_source?: string; // google
+  utm_medium?: string; // organic traffic, cpc, referral, social, email, direct
   utm_campaign?: string;
 }
 
@@ -70,7 +68,9 @@ const isDuplicateEvent = (event: AnalyticsEvent): boolean => {
 export const trackEvent = (event: AnalyticsEvent) => {
   // check for duplicate events
   if (isDuplicateEvent(event)) {
-    console.warn(`Duplicate event prevented: ${event.event_action}`);
+    if (process.env.NODE_ENV !== "production") {
+      console.warn(`Duplicate event prevented: ${event.event_action}`);
+    }
     return;
   }
 
@@ -91,7 +91,7 @@ export const trackEvent = (event: AnalyticsEvent) => {
       utm_medium: eventWithUTM.utm_medium,
       utm_campaign: eventWithUTM.utm_campaign,
     });
-  } else {
+  } else if (process.env.NODE_ENV !== "production") {
     console.warn("Google Analytics is not initialized.");
   }
 };

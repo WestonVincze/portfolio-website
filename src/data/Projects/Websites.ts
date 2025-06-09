@@ -11,7 +11,7 @@ export const Websites: ProjectDetails[] = [
     description:
       "A Frontend Mentor challenge which was completed as an avenue to learn and practice Tailwind CSS. The instructions were to create an input that accepts an IP address or domain and displays various geolocation data and a map. Design images and a loose style guideline was provided.",
     highlights: [
-      "Effecient API implementation leveraging a NextJS route handler",
+      "Efficient API implementation leveraging a NextJS route handler",
       "Environment variable feature flag for optional mock responses",
       "Adaptive user input that automatically adds decimals for ipv4 ip addresses",
     ],

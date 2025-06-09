@@ -15,11 +15,11 @@ export const ResumeScene = () => {
     "shrink",
   );
 
-  const handleButtonClick = () => {
+  const handleDownloadClick = (filename: string) => {
     trackEvent({
-      event_category: "engagement",
-      event_action: "button_click",
-      event_label: "download",
+      event_category: "conversion",
+      event_action: "download",
+      event_label: filename,
     });
   };
 
@@ -33,12 +33,16 @@ export const ResumeScene = () => {
         >
           <a
             href="/resumes/WestonVinczeResume-Concise.pdf"
-            onClick={handleButtonClick}
+            onClick={() => handleDownloadClick("single-page-resume")}
             target="_blank"
           >
             <StickyNote icon="PDF" text="Single-Page" />
           </a>
-          <a href="/resumes/WestonVinczeResume-Detailed.pdf" target="_blank">
+          <a
+            href="/resumes/WestonVinczeResume-Detailed.pdf"
+            onClick={() => handleDownloadClick("multi-page-resume")}
+            target="_blank"
+          >
             <StickyNote icon="PDF" text="Multi-Page" />
           </a>
         </AnimatedHeader>
