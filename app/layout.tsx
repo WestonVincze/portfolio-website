@@ -1,8 +1,8 @@
 import "../src/styles/globals.css";
 import { Metadata } from "next";
-import { Layout } from "@components/Layout";
 import { Poppins, Montserrat } from "next/font/google";
-import Script from "next/script";
+import { Layout } from "@components/Layout";
+import { Analytics } from "@components/Analytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://westonvincze.com"),
@@ -40,22 +40,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   const gtagId = process.env.NEXT_PUBLIC_GTAG_ID;
   return (
     <html lang="en">
-      <head>
-        <Script
-          id="google-analytics"
-          src={`https://www.googletagmanager.com/gtag/js?id=${gtagId}`}
-          strategy="afterInteractive"
-        />
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', '${gtagId}', { 'debug_mode':true });
-          `}
-        </Script>
-      </head>
+      <head>{gtagId && <Analytics gtagId={gtagId} />}</head>
       <body className={`${poppins.variable} ${montserrat.variable}`}>
         <Layout>{children}</Layout>
       </body>

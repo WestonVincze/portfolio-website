@@ -1,3 +1,6 @@
+/**
+ * Used for custom events - not currently used
+ */
 declare global {
   interface Window {
     gtag?: (command: string, ...args: unknown[]) => void;
