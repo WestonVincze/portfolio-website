@@ -7,12 +7,22 @@ import { SkillStickers } from "@components/SkillStickers";
 import { StickyNote } from "@components/StickyNote";
 import { HighlightedHeading } from "@components/HighlightedHeading";
 import { useInViewAnimation } from "@hooks/useInViewAnimation";
+import { trackEvent } from "src/utils/analytics";
 
 export const ResumeScene = () => {
   const [ref, animatedStyles, AnimatedHeader] = useInViewAnimation(
     "header",
     "shrink",
   );
+
+  const handleDownloadClick = (filename: string) => {
+    trackEvent({
+      event_category: "conversion",
+      event_action: "download",
+      event_label: filename,
+    });
+  };
+
   return (
     <Container>
       <article className={styles.resume}>
@@ -21,10 +31,18 @@ export const ResumeScene = () => {
           style={animatedStyles}
           className={styles.stickyNotes}
         >
-          <a href="/resumes/WestonVinczeResume-Concise.pdf" target="_blank">
+          <a
+            href="/resumes/WestonVinczeResume-Concise.pdf"
+            onClick={() => handleDownloadClick("single-page-resume")}
+            target="_blank"
+          >
             <StickyNote icon="PDF" text="Single-Page" />
           </a>
-          <a href="/resumes/WestonVinczeResume-Detailed.pdf" target="_blank">
+          <a
+            href="/resumes/WestonVinczeResume-Detailed.pdf"
+            onClick={() => handleDownloadClick("multi-page-resume")}
+            target="_blank"
+          >
             <StickyNote icon="PDF" text="Multi-Page" />
           </a>
         </AnimatedHeader>

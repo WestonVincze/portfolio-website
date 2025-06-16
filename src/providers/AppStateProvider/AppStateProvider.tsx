@@ -68,7 +68,9 @@ interface AppStateProviderProps {
   children: ReactNode;
 }
 export const AppStateProvider = ({ children }: AppStateProviderProps) => {
-  const appState = useInterpret(AppStateFSM);
+  const appState = useInterpret(AppStateFSM, {
+    devTools: process.env.NODE_ENV === "development",
+  });
 
   return (
     <AppStateContext.Provider value={{ appState }}>
