@@ -17,6 +17,13 @@ const getUTMParams = (): Record<string, string | null> => {
 export const Analytics = ({ gtagId }: { gtagId: string }) => {
   const utmParams = getUTMParams();
 
+  const gtagConfig = {
+    ...(process.env.NODE_ENV === "development" && { debug: true }),
+    utm_source: utmParams.utm_source,
+    utm_medium: utmParams.utm_medium,
+    utm_campaign: utmParams.utm_campaign,
+  };
+
   return (
     <>
       <Script
@@ -27,12 +34,7 @@ export const Analytics = ({ gtagId }: { gtagId: string }) => {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', '${gtagId}', {
-              ${process.env.NODE_ENV === "development" ? "'debug': true" : ""},
-              'utm_source': '${utmParams.utm_source}',
-              'utm_medium': '${utmParams.utm_medium}',
-              'utm_campaign': '${utmParams.utm_campaign}',
-            });
+            gtag('config', '${gtagId}', ${JSON.stringify(gtagConfig)});
           `,
         }}
       />
