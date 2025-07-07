@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   keywords: ["Web Development", "Portfolio", "NextJS", "Weston Vincze"],
   openGraph: {
     title: "Weston Vincze Portfolio",
-    siteName: "Weston Vincze - Frontend Developer",
+    siteName: "Weston Vincze - Freelance Web Developer",
     url: "https://westonvincze.com",
     images: ["/images/og-image.png", "/images/og-image-dark.png"],
     locale: "en_CA",

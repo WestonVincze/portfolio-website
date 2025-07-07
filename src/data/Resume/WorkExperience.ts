@@ -2,6 +2,35 @@ import { WorkExperience } from "./types";
 
 export const workExperience: WorkExperience[] = [
   {
+    company: "Self Employed",
+    title: "Frontend Developer (Freelance)",
+    skills: [
+      "NextJS",
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Tailwind",
+      "Shopify",
+      "Figma",
+      "GoogleAnalytics",
+      "GitHub",
+    ],
+    description:
+      "Partner with local businesses and other developers to build, enhance, and maintain modern web applications with a focus on performance, usability, and scalable design.",
+    location: "Hamilton, Canada (Remote)",
+    startDate: "11/2025",
+    endDate: "present",
+    highlights: [
+      "Added features to a custom CMS, integrated third-party services like Telegram, and assisted with an end-to-end architecture redesign",
+      "Pitched and delivered a PoC that secured a new client; currently leading a full website redesign",
+      "Support a Shopify eCommerce site by implementing SEO/CRO-driven features, improving analytics, and building custom web components using Svelte",
+      "Developing a new website with CMS integration to streamline content management (in progress)",
+      "Improve web performance, accessibility, and maintainability by cleaning up legacy code and enforcing consistent design systems",
+    ],
+  },
+  {
     company: "eLocal",
     title: "Frontend Developer",
     skills: [

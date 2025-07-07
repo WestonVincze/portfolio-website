@@ -6,7 +6,7 @@ import { useAppState } from "@providers/AppStateProvider";
 type Path = "/" | "/resume" | "/projects";
 
 const subHeadingText = {
-  "/": "Frontend Developer",
+  "/": "Freelance Web Developer",
   "/resume": "My Resume",
   "/projects": "My Projects",
 };

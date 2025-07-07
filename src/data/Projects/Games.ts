@@ -2,6 +2,43 @@ import { ProjectDetails } from "./types";
 
 export const Games: ProjectDetails[] = [
   {
+    projectName: "Ant Simulator",
+    category: "game",
+    id: "ant-simulator",
+    year: "2025",
+    status: "in progress",
+    skills: [
+      "React",
+      "ThreeJS",
+      "Koota",
+      "TypeScript",
+      "JavaScript",
+      "HTML",
+      "CSS",
+    ],
+    subheading: "3D Web Simulation",
+    description:
+      "Ant Simulator is a browser game for visualizing realistic ant behavior. Ants leave pheromones that evaporate over time to guide other ants toward food or back to their nest. Using sensors, ants will follow the strongest pheromone trails, reinforcing high value paths while low value paths degrade.",
+    highlights: [
+      "Highly performant ECS state management using Koota",
+      "Realistic ant behavior and visualization",
+      "Mobile friendly - highly responsive and small download size",
+      "Handles hundreds of ants and thousands of pheromone nodes with little performance loss",
+    ],
+    links: [
+      {
+        icon: "Eye",
+        text: "Live Demo",
+        url: "https://ant-simulator-koota.vercel.app",
+      },
+      {
+        icon: "GitHub",
+        text: "Source Code",
+        url: "https://github.com/WestonVincze/ant-simulator",
+      },
+    ],
+  },
+  {
     projectName: "Baby Simulator",
     category: "game",
     id: "baby-simulator",
