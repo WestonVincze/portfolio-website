@@ -22,7 +22,7 @@ export const Websites: ProjectDetails[] = [
       "Multi step client intake form with direct, automated emails",
       "Fully accessible and responsive design with near-perfect web vitals",
       "Custom Hero animation and animated SVGs",
-      "Reduced monthly subscription fees by 100%"
+      "Reduced monthly subscription fees by 100%",
     ],
     links: [
       {
