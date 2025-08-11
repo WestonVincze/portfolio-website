@@ -2,6 +2,37 @@ import { ProjectDetails } from "./types";
 
 export const Websites: ProjectDetails[] = [
   {
+    projectName: "Credit Cruisers Redesign",
+    category: "website",
+    id: "credit-cruisers",
+    year: "2025",
+    skills: [
+      "NextJS",
+      "React",
+      "Tailwind",
+      "HTML",
+      "CSS",
+      "GoogleAnalytics",
+      "Vercel",
+    ],
+    subheading: "Client Website",
+    description:
+      "Redesigned and rebuilt a client's legacy Wix website with Next.js and a focus on performance, responsiveness, and user experience. The new site features a streamlined user flow, improved SEO, and significantly enhanced web vitals. The Next.js rebuild is phase 1 of 2 and lays down the groundwork for a scalable application that will feature tiered authentication and a vehicle inventory.",
+    highlights: [
+      "Multi step client intake form with direct, automated emails",
+      "Fully accessible and responsive design with near-perfect web vitals",
+      "Custom Hero animation and animated SVGs",
+      "Reduced monthly subscription fees by 100%"
+    ],
+    links: [
+      {
+        icon: "Eye",
+        text: "Live Website",
+        url: "https://creditcruisers.ca",
+      },
+    ],
+  },
+  {
     projectName: "IP Address Tracker",
     category: "demo",
     id: "ip-address-tracker",
