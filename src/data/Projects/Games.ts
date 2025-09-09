@@ -27,14 +27,14 @@ export const Games: ProjectDetails[] = [
     ],
     links: [
       {
-        icon: "Eye",
-        text: "Live Demo",
-        url: "https://ant-simulator-koota.vercel.app",
-      },
-      {
         icon: "GitHub",
         text: "Source Code",
         url: "https://github.com/WestonVincze/ant-simulator",
+      },
+      {
+        icon: "Eye",
+        text: "Live Demo",
+        url: "https://ant-simulator-koota.vercel.app",
       },
     ],
   },
@@ -64,14 +64,14 @@ export const Games: ProjectDetails[] = [
     ],
     links: [
       {
-        icon: "Eye",
-        text: "Live Demo",
-        url: "https://baby-simulator.vercel.app",
-      },
-      {
         icon: "GitHub",
         text: "Source Code",
         url: "https://github.com/WestonVincze/baby-simulator",
+      },
+      {
+        icon: "Eye",
+        text: "Live Demo",
+        url: "https://baby-simulator.vercel.app",
       },
     ],
   },
@@ -141,14 +141,14 @@ export const Games: ProjectDetails[] = [
     ],
     links: [
       {
-        icon: "Eye",
-        text: "Play Game",
-        url: "https://necro-cursor.vercel.app",
-      },
-      {
         icon: "GitHub",
         text: "Source Code",
         url: "https://github.com/WestonVincze/necro-cursor",
+      },
+      {
+        icon: "Eye",
+        text: "Play Game",
+        url: "https://necro-cursor.vercel.app",
       },
     ],
   },

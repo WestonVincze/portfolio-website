@@ -5,7 +5,7 @@ import { technicalSkills } from "./TechnicalSkills";
 import { workExperience } from "./WorkExperience";
 
 const intro =
-  "Self-driven Frontend Developer with 7+ years of experience building user-focused, high-performance web applications. JavaScript expert specializing in Next.js, React, and TypeScript, dedicated to delivering scalable, maintainable solutions.";
+  "Self-driven Frontend Developer with 8 years of experience building user-focused, high-performance web applications. JavaScript expert specializing in NextJS, React, and TypeScript, dedicated to delivering scalable, maintainable solutions.";
 
 export const Resume: ResumeFormat = {
   intro,
