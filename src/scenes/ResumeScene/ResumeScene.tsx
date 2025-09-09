@@ -56,15 +56,17 @@ export const ResumeScene = () => {
 
         <section>
           <HighlightedHeading id="skills" text="Skills." />
-          {Resume.technicalSkills.map((skillType, i) => (
-            <LinedPaper key={i} title={skillType.title}>
-              <ul className={styles.skills}>
-                {skillType.skills.map((skill, i) => (
-                  <li key={i}>{skill}</li>
-                ))}
-              </ul>
-            </LinedPaper>
-          ))}
+          <div className={styles.skillsContainer}>
+            {Resume.technicalSkills.map((skillType, i) => (
+              <LinedPaper key={i} title={skillType.title}>
+                <ul className={styles.skills}>
+                  {skillType.skills.map((skill, i) => (
+                    <li key={i}>{skill}</li>
+                  ))}
+                </ul>
+              </LinedPaper>
+            ))}
+          </div>
         </section>
 
         <section className={styles.experience}>

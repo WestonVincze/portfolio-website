@@ -8,6 +8,12 @@
   column-gap: var(--spacing-2);
 }
 
+.skillsContainer {
+  display: grid;
+  grid-template: auto / 1fr 1fr;
+  column-gap: var(--line-height);
+}
+
 .skills {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
@@ -27,6 +33,12 @@
 .hobbies {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}
+
+@media (max-width: 812px) {
+  .skillsContainer {
+    grid-template-columns: 100%;
+  }
 }
 
 @media (max-width: 600px) {
