@@ -12,7 +12,7 @@ export const technicalSkills: TechnicalSkill[] = [
       "SQL",
       "PHP",
       "Go",
-      "Python"
+      "Python",
     ],
   },
   {
@@ -46,6 +46,14 @@ export const technicalSkills: TechnicalSkill[] = [
   },
   {
     title: "Game Dev",
-    skills: ["ThreeJS", "BitECS", "PixiJS", "Phaser", "Colyseus", "Unity", "Aseprite"],
+    skills: [
+      "ThreeJS",
+      "BitECS",
+      "PixiJS",
+      "Phaser",
+      "Colyseus",
+      "Unity",
+      "Aseprite",
+    ],
   },
 ];
