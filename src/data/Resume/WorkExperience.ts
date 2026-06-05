@@ -13,9 +13,10 @@ export const workExperience: WorkExperience[] = [
       "CSS",
       "Jest",
       "AWS",
+      "Docker",
       "JIRA",
-      "Figma",
       "GitHub",
+      "Figma",
     ],
     description:
       "Served as a Senior Frontend Developer within Wattpad's User Engagement & Growth team, collaborating with designers, backend engineers, and product stakeholders to deliver user-facing features, improve retention, and reduce friction across a large-scale web platform.",
@@ -130,7 +131,7 @@ export const workExperience: WorkExperience[] = [
   },
   {
     company: "Bitovi",
-    title: "Frontend Consultant",
+    title: "Frontend Consultant (Contract)",
     skills: [
       "React",
       "NextJS",
@@ -190,29 +191,6 @@ export const workExperience: WorkExperience[] = [
     ],
   },
   {
-    company: "Self Employed",
-    title: "Frontend Developer (Freelance)",
-    skills: [
-      "JQuery",
-      "JavaScript",
-      "HTML",
-      "CSS",
-      "Bootstrap",
-      "WordPress",
-      "PHP",
-      "Figma",
-    ],
-    description:
-      "Cultivated client relationships, gathered project requirements, and delivered full websites from scratch.",
-    location: "Toronto, Canada (Remote)",
-    startDate: "11/2019",
-    endDate: "04/2020",
-    highlights: [
-      "Built custom eCommerce and mailing solutions, boosting client engagement",
-      "Improved website performance and search visibility through targeted SEO strategies",
-    ],
-  },
-  {
     company: "LBC IT Solutions",
     title: "Junior Frontend Developer",
     skills: [
@@ -235,11 +213,11 @@ export const workExperience: WorkExperience[] = [
       "Developed and maintained secure, large-scale web apps and WordPress websites for multiple clients.",
     location: "Toronto, Canada (Remote)",
     startDate: "07/2018",
-    endDate: "11/2019",
+    endDate: "04/2020",
   },
   {
-    company: "PWC",
-    title: "Frontend Developer (Intern)",
+    company: "PWC Technologies Inc.",
+    title: "Frontend Developer (Contract Internship)",
     skills: [
       "JQuery",
       "JavaScript",
