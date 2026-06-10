@@ -34,7 +34,7 @@ export const Games: ProjectDetails[] = [
       "Modular components and systems built in a shared package",
       "Asymmetrical multiplayer gameplay",
       "Structured monorepo with shared, client, and server packages",
-      "Autodeploy pipeline and docker containerization for server"
+      "Autodeploy pipeline and docker containerization for server",
     ],
     links: [
       {
