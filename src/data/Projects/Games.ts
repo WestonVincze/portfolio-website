@@ -5,7 +5,7 @@ export const Games: ProjectDetails[] = [
     projectName: "Necro Vs Crown",
     category: "game",
     id: "necro-vs-crown",
-    screenshots: ["necro-vs-crown-1.jpg"],
+    screenshots: [{ url: "necro-vs-crown-1.png", alt: "Necro Vs Crown lobby screen" }, { url: "necro-vs-crown-2.png", alt: "Necro Vs Crown gameplay screenshot"}],
     year: "2026",
     status: "in progress",
     skills: [
@@ -24,7 +24,7 @@ export const Games: ProjectDetails[] = [
     ],
     subheading: "Real Time Multiplayer Game",
     description:
-      "Necro VS Crown is an ambitious server-authoritative multiplayer browser game currently in development. It a continuation of a single player PoC I built called Necro Cursor. Necro VS Crown features two unique factions with opposing goals and distinct mechanics. The Necro's gameplay is akin to a survivor rogue-like, while the Crown's gameplay is akin to a deck building rogue-like. As the game progresses, players select upgrades that empower their units and alter gameplay. The Necro player has direct control over a lowly necromancer and amasses an army of skeletons from the bones of slain enemies. The Crown player collects gold over time that can be spent to spawn units who will chase and attack Necro units.",
+      "Necro Vs Crown is an ambitious server-authoritative multiplayer browser game currently in development. It a continuation of a single player PoC I built called Necro Cursor. Necro Vs Crown features two unique factions with opposing goals and distinct mechanics. The Necro's gameplay is akin to a survivor rogue-like, while the Crown's gameplay is akin to a deck building rogue-like. As the game progresses, players select upgrades that empower their units and alter gameplay. The Necro player has direct control over a lowly necromancer and amasses an army of skeletons from the bones of slain enemies. The Crown player collects gold over time that can be spent to spawn units who will chase and attack Necro units.",
     highlights: [
       "Highly performant data-oriented architecture built with bitECS (ECS framework)",
       "Sandbox mode and other development tools to improve productivity",

@@ -2,7 +2,7 @@ import { ProjectDetails } from "./types";
 
 export const Websites: ProjectDetails[] = [
   {
-    projectName: "Credit Cruisers Redesign",
+    projectName: "Credit Cruisers",
     category: "website",
     id: "credit-cruisers",
     year: "2025",
