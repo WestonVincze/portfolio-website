@@ -5,7 +5,13 @@ export const Games: ProjectDetails[] = [
     projectName: "Necro Vs Crown",
     category: "game",
     id: "necro-vs-crown",
-    screenshots: [{ url: "necro-vs-crown-1.png", alt: "Necro Vs Crown lobby screen" }, { url: "necro-vs-crown-2.png", alt: "Necro Vs Crown gameplay screenshot"}],
+    screenshots: [
+      { url: "necro-vs-crown-1.png", alt: "Necro Vs Crown lobby screen" },
+      {
+        url: "necro-vs-crown-2.png",
+        alt: "Necro Vs Crown gameplay screenshot",
+      },
+    ],
     year: "2026",
     status: "in progress",
     skills: [

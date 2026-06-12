@@ -26,7 +26,9 @@ const filterProjects = (
 export const ProjectsScene = (): JSX.Element => {
   const [filteredProjects, setFilteredProjects] =
     useState<ProjectDetails[]>(projects);
-  const [selectedScreenshot, setSelectedScreenshot] = useState<string | null>(null);
+  const [selectedScreenshot, setSelectedScreenshot] = useState<string | null>(
+    null,
+  );
 
   const handleFilterChange = (criteria: FilterCriteria) => {
     setFilteredProjects(filterProjects(projects, criteria));
@@ -34,11 +36,11 @@ export const ProjectsScene = (): JSX.Element => {
 
   const handleSelectScreenshot = (url: string) => {
     setSelectedScreenshot(url);
-  }
+  };
 
   const handleCloseScreenshot = () => {
     setSelectedScreenshot(null);
-  }
+  };
 
   return (
     <Container>
@@ -48,7 +50,11 @@ export const ProjectsScene = (): JSX.Element => {
           .sort((a, b) => parseInt(b.year) - parseInt(a.year))
           .map((project, i) => (
             <section key={i}>
-              <ProjectCard onSelectScreenshot={handleSelectScreenshot} {...project} id={`challenges-${project.id}`} />
+              <ProjectCard
+                onSelectScreenshot={handleSelectScreenshot}
+                {...project}
+                id={`challenges-${project.id}`}
+              />
             </section>
           ))
       ) : (
@@ -57,8 +63,11 @@ export const ProjectsScene = (): JSX.Element => {
         </div>
       )}
 
-      {selectedScreenshot && <div className={styles.screenshotModal} onClick={handleCloseScreenshot}><img src={`images/screenshots/${selectedScreenshot}`} /> </div>}
-      
+      {selectedScreenshot && (
+        <div className={styles.screenshotModal} onClick={handleCloseScreenshot}>
+          <img src={`images/screenshots/${selectedScreenshot}`} />{" "}
+        </div>
+      )}
     </Container>
   );
 };

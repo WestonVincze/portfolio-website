@@ -4,9 +4,9 @@ import { StickyNote } from "../StickyNote";
 import { ProjectDetails } from "@data/Projects/types";
 import { SkillStickers } from "../SkillStickers";
 
-type ProjectCardProps = React.HTMLAttributes<HTMLDivElement> &
-    { onSelectScreenshot: (url: string) => void } &
-    ProjectDetails 
+type ProjectCardProps = React.HTMLAttributes<HTMLDivElement> & {
+  onSelectScreenshot: (url: string) => void;
+} & ProjectDetails;
 
 export const ProjectCard = ({
   id,
@@ -38,13 +38,16 @@ export const ProjectCard = ({
       {screenshots && (
         <section className={styles.screenshotContainer}>
           {screenshots?.length > 0 &&
-            screenshots?.map(screenshot => (
-              <img key={screenshot.url} src={`images/screenshots/${screenshot.url}`} alt={screenshot.alt} onClick={() => onSelectScreenshot(screenshot.url)} />
-            ))
-          }
+            screenshots?.map((screenshot) => (
+              <img
+                key={screenshot.url}
+                src={`images/screenshots/${screenshot.url}`}
+                alt={screenshot.alt}
+                onClick={() => onSelectScreenshot(screenshot.url)}
+              />
+            ))}
         </section>
       )}
-
 
       <section>
         <h4>Description</h4>
