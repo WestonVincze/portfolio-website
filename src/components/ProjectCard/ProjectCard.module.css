@@ -2,6 +2,19 @@
   position: relative;
 }
 
+.screenshotContainer {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.screenshotContainer img {
+  max-width: calc(50% - var(--spacing-2) / 2);
+  border: 3px solid var(--font-color);
+  border-radius: 5px;
+  filter: var(--shadow);
+
+}
+
 .paperclip {
   position: absolute;
   top: -35px;
