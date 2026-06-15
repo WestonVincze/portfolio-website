@@ -2,7 +2,7 @@
 
 This website is live and hosted at https://westonvincze.com.
 
-All art and code was designed and developed by me. This website outlines my path into the development world, contains my resume and a downloadable PDF, and showcases my portfolio of web apps and games. It was created using NextJS, TypeScript, XState, and React-Spring, designed using Figma, and is hosted on Vercel.
+All art and code was designed and developed by me. This website outlines my path into the development world, contains my resume and a downloadable PDF, and showcases my portfolio of web apps and games. It was created using Next.js, TypeScript, XState, and React-Spring, designed using Figma, and is hosted on Vercel.
 
 View current and upcoming tasks on the [Project Board](https://github.com/users/WestonVincze/projects/1)
 

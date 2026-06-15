@@ -3,6 +3,7 @@ import { LinedPaper } from "../LinedPaper";
 import { StickyNote } from "../StickyNote";
 import { ProjectDetails } from "@data/Projects/types";
 import { SkillStickers } from "../SkillStickers";
+import { ProjectScreenshotCarousel } from "@components/ProjectScreenshotCarousel";
 
 type ProjectCardProps = React.HTMLAttributes<HTMLDivElement> & {
   onSelectScreenshot: (url: string) => void;
@@ -10,7 +11,6 @@ type ProjectCardProps = React.HTMLAttributes<HTMLDivElement> & {
 
 export const ProjectCard = ({
   id,
-  onSelectScreenshot,
   projectName,
   year,
   skills,
@@ -35,19 +35,11 @@ export const ProjectCard = ({
         <SkillStickers skills={skills} />
       </section>
 
-      {screenshots && (
-        <section className={styles.screenshotContainer}>
-          {screenshots?.length > 0 &&
-            screenshots?.map((screenshot) => (
-              <img
-                key={screenshot.url}
-                src={`images/screenshots/${screenshot.url}`}
-                alt={screenshot.alt}
-                onClick={() => onSelectScreenshot(screenshot.url)}
-              />
-            ))}
+      {screenshots &&
+        <section>
+          <ProjectScreenshotCarousel screenshots={screenshots} />
         </section>
-      )}
+      }
 
       <section>
         <h4>Description</h4>
