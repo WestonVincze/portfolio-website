@@ -9,6 +9,8 @@ export const Websites: ProjectDetails[] = [
     skills: [
       "NextJS",
       "React",
+      "TypeScript",
+      "JavaScript",
       "Tailwind",
       "HTML",
       "CSS",
@@ -18,7 +20,7 @@ export const Websites: ProjectDetails[] = [
     ],
     subheading: "Client Website",
     description:
-      "Rebuilt client's Wix website using NextJS, adding many new features, boosting performance, and vastly improving user experience. This project came to life through a proof-of-concept pitch and was delivered in two phases. Phase one was a total redesign and rebuild starting with a Figma mockup before building the site and adding dynamic multi-step forms, email services with templates, and animated hero/icons. Phase two added a vehicle inventory page, inventory filtering and sorting, tiered authentication with user roles, and an integrated database populated by web scrapers.",
+      "Rebuilt client's Wix website using Next.js, adding many new features, boosting performance, and vastly improving user experience. This project came to life through a proof-of-concept pitch and was delivered in two phases. Phase one was a total redesign and rebuild starting with a Figma mockup before building the site and adding dynamic multi-step forms, email services with templates, and animated hero/icons. Phase two added a vehicle inventory page, inventory filtering and sorting, tiered authentication with user roles, and an integrated database populated by web scrapers.",
     highlights: [
       "Ability to edit inventory for authenticated admin users",
       "Custom web scrapers for 7 domains, storing a standardized data set",
@@ -42,7 +44,7 @@ export const Websites: ProjectDetails[] = [
     category: "demo",
     id: "ip-address-tracker",
     year: "2025",
-    skills: ["NextJS", "React", "Tailwind", "HTML", "CSS", "Vercel"],
+    skills: ["NextJS", "React", "TypeScript", "Tailwind", "HTML", "CSS", "Vercel"],
     subheading: "Frontend Mentor Challenge",
     description:
       "A Frontend Mentor challenge which was completed as an avenue to learn and practice Tailwind CSS. The instructions were to create an input that accepts an IP address or domain and displays various geolocation data and a map. Design images and a loose style guideline was provided.",
@@ -151,7 +153,7 @@ export const Websites: ProjectDetails[] = [
     ],
     subheading: "Digital Resume and Portfolio",
     description:
-      "You are currently viewing this project! I created this website using NextJS to act as a hub for my portfolio and resume. The source code is openly available and demonstrates my iterative development style. This project is in the late MVP stage with QoL and visual improvements on the pipeline. You can view the project board and git history to see the most recent and upcoming changes.",
+      "You are currently viewing this project! I designed and created this website using Next.js to act as a hub for my portfolio and resume. Fully custom design and tools with light animations, light/dark themes, and verbose accessibility features including a lined paper component that perfectly scales with the users relative font size.",
     highlights: [
       "Shared logic extracted into highly reusable custom hooks for consistency and ease of use",
       "Modular component architecture, enforcing a strong separation of concerns",
@@ -264,7 +266,7 @@ export const Websites: ProjectDetails[] = [
     ],
     subheading: "Learning Exercise",
     description:
-      "I built this full stack application as a learning exercise. This project is a mock e-commerce website with a virtual storefront for 'buying' dogs. Though it is no longer live, I did establish an autodeploy pipeline using Azure DevOps. Controllers access SQL data using linq statements and leverage VueJS to display and modify data.",
+      "I built this full stack application as a learning exercise. This project is a mock e-commerce website with a virtual storefront for 'buying' dogs. Though it is no longer live, I did establish an autodeploy pipeline using Azure DevOps. Controllers access SQL data using linq statements and leverage Vue.js to display and modify data.",
     highlights: [
       "Mock e-commerce experience featuring item details, shopping cart, and checkout pages",
       "Dynamic routing for item detail pages",
@@ -295,7 +297,7 @@ export const Websites: ProjectDetails[] = [
     ],
     subheading: "Original Version",
     description:
-      "A website I created as an avenue to learn NextJS, GitHub pages, and publicly host a portfolio of my work to market myself as a freelance web developer. This was the original concept of my current website.",
+      "The first portfolio website I created as an avenue to learn Next.js, GitHub pages, and publicly host a portfolio of my work to market myself as a freelance web developer. This was the original concept of my current website.",
     links: [
       {
         icon: "GitHub",

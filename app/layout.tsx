@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "Weston Vincze | %s",
     absolute: "Weston Vincze",
   },
-  description: "Portfolio Website built by Weston Vincze using NextJS.",
+  description: "Portfolio Website built by Weston Vincze using Next.js.",
   keywords: ["Web Development", "Portfolio", "NextJS", "Weston Vincze"],
   openGraph: {
     title: "Weston Vincze Portfolio",

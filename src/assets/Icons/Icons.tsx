@@ -670,7 +670,7 @@ export const Icons: Record<string, IconProps> = {
     ),
   },
   NextJS: {
-    title: "NextJS",
+    title: "Next.js",
     icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -1235,7 +1235,7 @@ export const Icons: Record<string, IconProps> = {
     ),
   },
   Koota: {
-    title: "Koota Logo",
+    title: "Koota",
     icon: () => (
       <svg
         width="422"
