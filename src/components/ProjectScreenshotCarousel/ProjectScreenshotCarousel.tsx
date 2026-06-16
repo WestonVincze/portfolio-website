@@ -158,7 +158,7 @@ export const ProjectScreenshotCarousel = ({
           onClick={handlePrevious}
           aria-label="Previous screenshot"
         >
-          {`<`}
+          {"<"}
         </button>
 
         <div className={styles.dotsContainer}>
@@ -178,7 +178,7 @@ export const ProjectScreenshotCarousel = ({
           onClick={handleNext}
           aria-label="Next screenshot"
         >
-          {`>`}
+          {">"}
         </button>
       </div>
 

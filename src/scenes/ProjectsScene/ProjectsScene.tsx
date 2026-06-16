@@ -2,7 +2,7 @@ import styles from "./ProjectsScene.module.css";
 import { useState } from "react";
 import { ProjectCard } from "@components/ProjectCard";
 import { Container } from "@components/Container";
-import { Projects, ProjectDetails, ScreenshotMeta } from "@data/Projects";
+import { Projects, ProjectDetails } from "@data/Projects";
 import { FilterCriteria, ProjectFilter } from "@components/ProjectFilter";
 
 const projects = Projects;
