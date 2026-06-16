@@ -51,7 +51,7 @@
   --paper-header-gap: calc(var(--line-height) * 2);
 
   /* other */
-  --shadow: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
+  --shadow: drop-shadow(0 0 6px rgba(0, 0, 0, 0.2));
 
   color-scheme: light dark;
 }
@@ -65,6 +65,7 @@
   --font-color: var(--font--light);
   --highlight: var(--yellow);
   --highlight-60: var(--yellow-60);
+  --shadow: drop-shadow(0 0 6px rgba(0, 0, 0, 0.2));
   --paper-texture: var(--paper-texture--light);
   --texture-opacity: 100%;
 }
@@ -75,7 +76,7 @@
   --font-color: var(--font--dark);
   --highlight: var(--purple-shaded);
   --highlight-60: var(--purple-60);
-  --shadow: drop-shadow(0 0 8px rgba(0, 0, 0, 0.35));
+  --shadow: drop-shadow(0 0 6px rgba(0, 0, 0, 0.65));
   --paper-texture: var(--paper-texture--dark);
   --texture-opacity: 30%;
 }
@@ -89,7 +90,7 @@
     --font-color: var(--font--dark);
     --highlight: var(--purple-shaded);
     --highlight-60: var(--purple-60);
-    --shadow: drop-shadow(0 0 8px rgba(0, 0, 0, 0.35));
+    --shadow: drop-shadow(0 0 6px rgba(0, 0, 0, 0.65));
     --paper-texture: var(--paper-texture--dark);
     --texture-opacity: 30%;
   }
@@ -212,15 +213,17 @@ ul > li:before {
 }
 
 /***** Responsive Queries *****/
-@media (max-width: 550px) {
+@media (max-width: 500px) {
   :root {
     --medium-margin: 8px;
     --small-margin: 4px;
-    --spacing-1: 5px;
-    --spacing-2: 10px;
-    --paper-left-gap: var(--line-height);
+    --spacing-1: 6px;
+    --spacing-2: 12px;
+    --paper-left-gap: var(--spacing-2);
   }
-
+  html {
+    padding: 0;
+  }
   h1 {
     font-size: 1.8rem;
     line-height: 2.2rem;
@@ -232,10 +235,8 @@ ul > li:before {
 
 @media (max-width: 360px) {
   :root {
-    --medium-margin: 5px;
-    --small-margin: 2px;
-    --spacing-1: 2px;
-    --spacing-2: 4px;
+    --spacing-1: 4px;
+    --spacing-2: 8px;
   }
 
   html {

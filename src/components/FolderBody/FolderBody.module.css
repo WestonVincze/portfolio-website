@@ -1,7 +1,7 @@
 .folder {
   z-index: 5;
   background-color: var(--folder);
-  padding: var(--spacing-2);
+  padding: var(--spacing-1);
   position: relative;
 }
 
