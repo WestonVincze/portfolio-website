@@ -6,6 +6,8 @@ import styles from "./ProjectScreenshotCarousel.module.css";
 import { ScreenshotMeta } from "@data/Projects";
 import { ScreenshotModal } from "./ScreenshotModal";
 
+const AUTO_SCROLL_INTERVAL = 5000;
+
 type ProjectScreenshotCarouselProps = {
   screenshots: ScreenshotMeta[];
 };
@@ -23,6 +25,7 @@ export const ProjectScreenshotCarousel = ({
   );
   const containerRef = useRef<HTMLDivElement>(null);
   const autoScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const imageButtonRef = useRef<HTMLButtonElement>(null);
 
   const handleSelectScreenshot = (screenshot: ScreenshotMeta) => {
     setSelectedScreenshot(screenshot);
@@ -46,11 +49,9 @@ export const ProjectScreenshotCarousel = ({
       return;
     }
 
-    const interval = 3000;
-
     autoScrollTimeoutRef.current = setTimeout(() => {
       setCurrentIndex((prev) => (prev + 1) % screenshots.length);
-    }, interval);
+    }, AUTO_SCROLL_INTERVAL);
 
     return () => {
       if (autoScrollTimeoutRef.current) {
@@ -87,6 +88,11 @@ export const ProjectScreenshotCarousel = ({
         e.preventDefault();
         setAutoScroll(false);
         setCurrentIndex((prev) => (prev + 1) % screenshots.length);
+      } else if (
+        e.key === "Enter" &&
+        document.activeElement === imageButtonRef.current
+      ) {
+        handleSelectScreenshot(screenshots[currentIndex]);
       }
     };
 
@@ -119,15 +125,20 @@ export const ProjectScreenshotCarousel = ({
           setIsHovering(false);
           setAutoScroll(true);
         }}
+        role="region"
+        aria-label="Project screenshots carousel"
+        aria-roledescription="carousel"
       >
         {screenshots.map((screenshot, index) => {
           const distance =
             (index - currentIndex + screenshots.length) % screenshots.length;
           const isVisible = distance < 3;
+          const isCurrent = distance === 0;
 
           return (
-            <div
+            <button
               key={screenshot.url}
+              ref={imageButtonRef}
               className={styles.carouselItem}
               data-distance={distance}
               style={{
@@ -135,6 +146,16 @@ export const ProjectScreenshotCarousel = ({
                 pointerEvents: isVisible ? "auto" : "none",
               }}
               onClick={() => handleSelectScreenshot(screenshot)}
+              onKeyDown={(e) => {
+                if (e.key === " ") {
+                  e.preventDefault();
+                  handleSelectScreenshot(screenshot);
+                }
+              }}
+              aria-label={`${screenshot.alt}. Press Enter or Space to view fullscreen`}
+              aria-current={isCurrent ? "true" : "false"}
+              tabIndex={isCurrent ? 0 : -1}
+              aria-disabled={!isCurrent}
             >
               {loadedImages.has(index) ? (
                 <Image
@@ -147,7 +168,7 @@ export const ProjectScreenshotCarousel = ({
               ) : (
                 <div className={styles.placeholder} />
               )}
-            </div>
+            </button>
           );
         })}
       </div>
@@ -158,7 +179,7 @@ export const ProjectScreenshotCarousel = ({
           onClick={handlePrevious}
           aria-label="Previous screenshot"
         >
-          {"<"}
+          🡰
         </button>
 
         <div className={styles.dotsContainer}>
@@ -178,7 +199,7 @@ export const ProjectScreenshotCarousel = ({
           onClick={handleNext}
           aria-label="Next screenshot"
         >
-          {">"}
+          🡲
         </button>
       </div>
 

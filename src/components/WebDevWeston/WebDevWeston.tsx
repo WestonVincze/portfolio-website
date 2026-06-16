@@ -23,6 +23,7 @@ export const WebDevWeston = () => {
         width={400}
         src={webDevWestonImage}
         alt={`${imageType} of Weston 'web' developing`}
+        unoptimized={!reducedMotion}
       />
       <Browser />
     </AnimatedSection>

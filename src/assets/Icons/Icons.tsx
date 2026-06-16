@@ -1271,6 +1271,7 @@ export const Icons: Record<string, IconProps> = {
         viewBox="0 0 226.77 226.77"
         xmlns="http://www.w3.org/2000/svg"
       >
+        <title>Three.js</title>
         <g
           transform="translate(8.964 4.2527)"
           fillRule="evenodd"

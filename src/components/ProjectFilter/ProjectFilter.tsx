@@ -76,13 +76,13 @@ const CustomOption = (props: any) => {
 const skillsFilterStyles: StylesConfig<Option, true> = {
   // control: (styles, { isFocused }) => ({ ...styles }),
   // menu: (styles) => ({ ...styles }),
-  placeholder: (styles) => ({ ...styles, fontStyle: "italic" }),
+  placeholder: (styles) => ({ ...styles, fontStyle: "italic", color: "#333" }),
 };
 
 const categoryFilterStyles: StylesConfig<Option, false> = {
   // control: (styles) => ({ ...styles }),
   // menu: (styles) => ({ ...styles }),
-  placeholder: (styles) => ({ ...styles, fontStyle: "italic" }),
+  placeholder: (styles) => ({ ...styles, fontStyle: "italic", color: "#333" }),
 };
 
 export const ProjectFilter: React.FC<{
@@ -124,7 +124,7 @@ export const ProjectFilter: React.FC<{
       >
         <div className={styles.filterControls}>
           <div className={styles.inputGroup}>
-            <label aria-label="category" htmlFor="category">
+            <label id="category-label" aria-label="category" htmlFor="category">
               Category
             </label>
             <Select
@@ -135,10 +135,14 @@ export const ProjectFilter: React.FC<{
               onChange={handleCategoryChange}
               options={categories}
               styles={categoryFilterStyles}
+              aria-label="Filter by project category"
+              aria-labelledby="category-label"
             />
           </div>
           <div className={styles.inputGroup}>
-            <label htmlFor={skillsId}>Skills</label>
+            <label id="skills-label" aria-label="skills" htmlFor={skillsId}>
+              Skills
+            </label>
             <Select
               id={skillsId}
               instanceId={skillsId}
@@ -149,6 +153,8 @@ export const ProjectFilter: React.FC<{
               options={skills}
               components={{ Option: CustomOption }}
               styles={skillsFilterStyles}
+              aria-label="Filter by specific skills"
+              aria-labelledby="skills-label"
             />
           </div>
         </div>

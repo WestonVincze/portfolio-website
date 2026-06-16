@@ -26,18 +26,13 @@ export const ScreenshotModal = ({
   return (
     <div className={styles.modal} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.header}>
-          <h3 className={styles.title}>
-            {screenshot.description ?? screenshot.alt}
-          </h3>
-          <button
-            className={styles.closeButton}
-            onClick={onClose}
-            aria-label="Close modal"
-          >
-            ✕
-          </button>
-        </div>
+        <button
+          className={styles.closeButton}
+          onClick={onClose}
+          aria-label="Close modal"
+        >
+          ✕
+        </button>
 
         <div className={styles.imageContainer}>
           <Image
@@ -47,6 +42,12 @@ export const ScreenshotModal = ({
             sizes="(max-width: 768px) 100vw, 90vw"
             className={styles.modalImage}
           />
+        </div>
+
+        <div className={styles.footer}>
+          <p className={styles.title}>
+            {screenshot.description ?? screenshot.alt}
+          </p>
         </div>
       </div>
     </div>
