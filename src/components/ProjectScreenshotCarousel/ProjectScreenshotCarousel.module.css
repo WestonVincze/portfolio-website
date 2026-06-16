@@ -163,3 +163,15 @@
     gap: var(--spacing-2);
   }
 }
+
+@media (max-width: 460px) {
+  .carouselContainer {
+    height: calc(var(--line-height) * 11);
+  }
+}
+
+@media (max-width: 410px) {
+  .carouselContainer {
+    height: calc(var(--line-height) * 10);
+  }
+}
