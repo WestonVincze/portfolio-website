@@ -58,18 +58,14 @@ export const useInViewAnimation = <T extends ElementType>(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): [RefObject<any>, SpringValues, AnimatedComponent<T>, boolean] => {
   const [ref, isInView] = useInView({ amount: 0.25 });
-  const { appState } = useAppState();
-  const ready = useSelector(appState, (state) =>
-    state.matches(AppStates.ready),
-  );
 
   const animatedStyles = useSpring({
     from: Animations[animation].from,
-    to: ready && isInView ? Animations[animation].to : {},
+    to: isInView ? Animations[animation].to : {},
     config: { tension: Animations[animation].tension },
   });
 
   const AnimatedComponent = animated(component);
 
-  return [ref, animatedStyles, AnimatedComponent, isInView && ready];
+  return [ref, animatedStyles, AnimatedComponent, isInView];
 };
