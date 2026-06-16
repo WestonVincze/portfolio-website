@@ -27,21 +27,21 @@
   position: absolute;
   border: 2px solid var(--off-white);
   aspect-ratio: 1200 / 800;
-  top: 50%;
-  left: 50%;
+  top: -25%;
+  left: 25%;
   width: 100%;
   transform-origin: center center;
   cursor: pointer;
   border-radius: 5px;
   overflow: hidden;
+  opacity: 0;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   transition: all 0.4s cubic-bezier(0.34, 1.26, 0.64, 1);
 }
 
 /* active image */
 .carouselItem[data-distance="0"] {
-  transition-delay: 0.3s;
-  transform: translate(-50%, -50%) translateY(0) scale(1) rotateZ(0deg);
+  transform: translate(-25%, 25%) translateY(0) scale(1) rotateZ(0deg);
   z-index: 30;
   opacity: 1;
   filter: var(--shadow);
@@ -49,9 +49,9 @@
 
 /* middle image */
 .carouselItem[data-distance="1"] {
-  transition-delay: 0.4s;
-  transform: translate(-50%, -50%) translateY(18px) translateX(6px)
-    scale(0.96) rotateZ(1.5deg);
+  transition-delay: 0.2s;
+  transform: translate(-25%, 25%) translateY(18px) translateX(6px)
+    scale(0.96) rotateZ(3.5deg);
   z-index: 20;
   opacity: 0.5;
 }
@@ -59,14 +59,15 @@
 /* last image */
 .carouselItem[data-distance="2"] {
   transition-delay: 0.4s;
-  transform: translate(-50%, -50%) translateY(36px) translateX(-8px)
+  transform: translate(-25%, 25%) translateY(36px) translateX(-8px)
     scale(0.92) rotateZ(-2deg);
   z-index: 10;
   opacity: 0.5;
 }
 
 .carouselItem[data-distance="0"]:hover {
-  transform: translate(-50%, -50%) translateY(-5px) scale(1) rotateZ(0deg);
+  transition-duration: 0.2s;
+  transform: translate(-25%, 25%) translateY(-5px) scale(1.02) rotateZ(0deg);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
 }
 

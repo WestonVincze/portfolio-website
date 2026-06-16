@@ -5,9 +5,8 @@ import { ProjectDetails } from "@data/Projects/types";
 import { SkillStickers } from "../SkillStickers";
 import { ProjectScreenshotCarousel } from "@components/ProjectScreenshotCarousel";
 
-type ProjectCardProps = React.HTMLAttributes<HTMLDivElement> & {
-  onSelectScreenshot: (url: string) => void;
-} & ProjectDetails;
+type ProjectCardProps = React.HTMLAttributes<HTMLDivElement> 
+& ProjectDetails;
 
 export const ProjectCard = ({
   id,
@@ -31,15 +30,15 @@ export const ProjectCard = ({
         {subheading}
       </p>
 
-      <section>
-        <SkillStickers skills={skills} />
-      </section>
-
       {screenshots &&
         <section>
           <ProjectScreenshotCarousel screenshots={screenshots} />
         </section>
       }
+
+      <section>
+        <SkillStickers skills={skills} />
+      </section>
 
       <section>
         <h4>Description</h4>

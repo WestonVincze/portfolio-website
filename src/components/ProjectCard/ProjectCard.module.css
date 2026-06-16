@@ -36,5 +36,5 @@
   column-gap: var(--spacing-2);
   position: absolute;
   top: calc(100% - var(--line-height) * 2);
-  left: var(paper-left-gap);
+  z-index: 10001;
 }

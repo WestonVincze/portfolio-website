@@ -3,15 +3,11 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import styles from "./ProjectScreenshotCarousel.module.css";
-
-type Screenshot = {
-  url: string;
-  alt: string;
-  description?: string;
-};
+import { ScreenshotMeta } from "@data/Projects";
+import { ScreenshotModal } from "./ScreenshotModal";
 
 type ProjectScreenshotCarouselProps = {
-  screenshots: Screenshot[];
+  screenshots: ScreenshotMeta[];
 };
 
 export const ProjectScreenshotCarousel = ({
@@ -20,25 +16,34 @@ export const ProjectScreenshotCarousel = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoScroll, setAutoScroll] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
+  const [selectedScreenshot, setSelectedScreenshot] = useState<ScreenshotMeta | null>(
+    null,
+  );
   const [loadedImages, setLoadedImages] = useState<Set<number>>(
     new Set([0, 1])
   );
   const containerRef = useRef<HTMLDivElement>(null);
   const autoScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleSelectScreenshot = (screenshot: ScreenshotMeta) => {
+    setSelectedScreenshot(screenshot);
+  };
+
+  const handleCloseScreenshot = () => {
+    setSelectedScreenshot(null);
+  };
 
   useEffect(() => {
     if (autoScrollTimeoutRef.current) {
       clearTimeout(autoScrollTimeoutRef.current);
     }
 
-    if (isHovering || !autoScroll || screenshots.length === 0) {
+    if (isHovering || selectedScreenshot || !autoScroll || screenshots.length === 0) {
       return;
     }
 
     const interval = 3000;
 
-    // Auto-scroll after interval
     autoScrollTimeoutRef.current = setTimeout(() => {
       setCurrentIndex((prev) => (prev + 1) % screenshots.length);
     }, interval);
@@ -47,11 +52,8 @@ export const ProjectScreenshotCarousel = ({
       if (autoScrollTimeoutRef.current) {
         clearTimeout(autoScrollTimeoutRef.current);
       }
-      if (progressIntervalRef.current) {
-        clearInterval(progressIntervalRef.current);
-      }
     };
-  }, [isHovering, autoScroll, screenshots.length]);
+  }, [isHovering, selectedScreenshot, autoScroll, screenshots.length]);
 
   useEffect(() => {
     setLoadedImages((prev) => {
@@ -69,6 +71,8 @@ export const ProjectScreenshotCarousel = ({
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedScreenshot) return;
+
       if (e.key === "ArrowLeft") {
         e.preventDefault();
         setAutoScroll(false);
@@ -84,7 +88,7 @@ export const ProjectScreenshotCarousel = ({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [screenshots.length]);
+  }, [screenshots.length, selectedScreenshot]);
 
   const handlePrevious = () => {
     setAutoScroll(false);
@@ -105,13 +109,6 @@ export const ProjectScreenshotCarousel = ({
 
   return (
     <div className={styles.wrapper}>
-      {/*<header>
-        <h3 className={styles.title}>{screenshots[currentIndex]?.alt}</h3>
-        {screenshots[currentIndex]?.description && (
-          <p className={styles.subtitle}>{screenshots[currentIndex]?.description}</p>
-        )}
-      </header>*/}
-
       <div
         className={styles.carouselContainer}
         ref={containerRef}
@@ -135,6 +132,7 @@ export const ProjectScreenshotCarousel = ({
                 opacity: isVisible ? 1 : 0,
                 pointerEvents: isVisible ? "auto" : "none",
               }}
+              onClick={() => handleSelectScreenshot(screenshot)}
             >
               {loadedImages.has(index) ? (
                 <Image
@@ -181,6 +179,10 @@ export const ProjectScreenshotCarousel = ({
           {`>`}
         </button>
       </div>
+
+      {selectedScreenshot && (
+        <ScreenshotModal screenshot={selectedScreenshot} onClose={handleCloseScreenshot}  />
+      )}
     </div>
   );
 };
