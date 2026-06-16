@@ -1,7 +1,8 @@
 .modal {
   position: fixed;
-  top: 0;
+  top: 0; 
   left: 0;
+  padding-top: calc(var(--line-height) * 2);
   width: 100%;
   height: 100%;
   z-index: 1000;
@@ -20,16 +21,28 @@
 }
 
 .modalContent {
-  position: absolute;
-  top: calc(var(--line-height) * 2);
-  left: var(--spacing-1);
-  width: calc(100% - var(--spacing-1) * 2);
+  position: relative;
+  width: 100%;
   background: var(--paper);
   border-radius: 5px;
-  border: 2px solid var(--font-color);
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  filter: var(--shadow);
+}
+
+.closeButton {
+  position: absolute;
+  top: var(--spacing-1);
+  right: var(--spacing-1);
+  z-index: 1001;
+  color: var(--font-color);
+  background: var(--paper);
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .imageContainer {
@@ -43,28 +56,13 @@
   object-fit: contain;
 }
 
-.header {
+.footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-1);
-  border-bottom: 2px solid var(--font-color);
+  padding: var(--spacing-1) var(--spacing-2);
 }
 
 .title {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.closeButton {
-  color: var(--font-color);
-  background: none;
-  width: 2.5rem;
-  height: 2.5rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
 }
