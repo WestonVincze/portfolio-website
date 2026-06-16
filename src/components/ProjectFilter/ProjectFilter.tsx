@@ -140,7 +140,9 @@ export const ProjectFilter: React.FC<{
             />
           </div>
           <div className={styles.inputGroup}>
-            <label id="skills-label" aria-label="skills" htmlFor={skillsId}>Skills</label>
+            <label id="skills-label" aria-label="skills" htmlFor={skillsId}>
+              Skills
+            </label>
             <Select
               id={skillsId}
               instanceId={skillsId}

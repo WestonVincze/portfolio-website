@@ -88,7 +88,10 @@ export const ProjectScreenshotCarousel = ({
         e.preventDefault();
         setAutoScroll(false);
         setCurrentIndex((prev) => (prev + 1) % screenshots.length);
-      } else if (e.key === "Enter" && document.activeElement === imageButtonRef.current) {
+      } else if (
+        e.key === "Enter" &&
+        document.activeElement === imageButtonRef.current
+      ) {
         handleSelectScreenshot(screenshots[currentIndex]);
       }
     };
