@@ -126,8 +126,6 @@
   display: flex;
   gap: var(--spacing-2);
   align-items: center;
-  margin-left: var(--spacing-1);
-  margin-right: var(--spacing-1);
 }
 
 .dot {

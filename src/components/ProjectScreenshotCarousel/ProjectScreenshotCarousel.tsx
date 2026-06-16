@@ -7,6 +7,7 @@ import { ScreenshotMeta } from "@data/Projects";
 import { ScreenshotModal } from "./ScreenshotModal";
 
 const AUTO_SCROLL_INTERVAL = 5000;
+const SWIPE_THRESHOLD = 50;
 
 type ProjectScreenshotCarouselProps = {
   screenshots: ScreenshotMeta[];
@@ -26,6 +27,8 @@ export const ProjectScreenshotCarousel = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const autoScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const imageButtonRef = useRef<HTMLButtonElement>(null);
+  const touchStartXRef = useRef<number>(0);
+  const touchEndXRef = useRef<number>(0);
 
   const handleSelectScreenshot = (screenshot: ScreenshotMeta) => {
     setSelectedScreenshot(screenshot);
@@ -33,6 +36,27 @@ export const ProjectScreenshotCarousel = ({
 
   const handleCloseScreenshot = () => {
     setSelectedScreenshot(null);
+  };
+
+  const handleSwipe = () => {
+    const difference = touchStartXRef.current - touchEndXRef.current;
+    const isLeftSwipe = difference > SWIPE_THRESHOLD;
+    const isRightSwipe = difference < -SWIPE_THRESHOLD;
+
+    if (isLeftSwipe) {
+      handleNext();
+    } else if (isRightSwipe) {
+      handlePrevious();
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchStartXRef.current = e.changedTouches[0].screenX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchEndXRef.current = e.changedTouches[0].screenX;
+    handleSwipe();
   };
 
   useEffect(() => {
@@ -125,6 +149,8 @@ export const ProjectScreenshotCarousel = ({
           setIsHovering(false);
           setAutoScroll(true);
         }}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
         role="region"
         aria-label="Project screenshots carousel"
         aria-roledescription="carousel"
@@ -179,7 +205,7 @@ export const ProjectScreenshotCarousel = ({
           onClick={handlePrevious}
           aria-label="Previous screenshot"
         >
-          🡰
+          &#129032;
         </button>
 
         <div className={styles.dotsContainer}>
@@ -199,7 +225,7 @@ export const ProjectScreenshotCarousel = ({
           onClick={handleNext}
           aria-label="Next screenshot"
         >
-          🡲
+          &#129034;
         </button>
       </div>
 
