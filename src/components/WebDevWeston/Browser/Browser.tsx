@@ -21,11 +21,17 @@ export const Browser = ({
 }: BrowserProps) => {
   const [toggle, setToggle] = useState(false);
   const [toggleScreen, setToggleScreen] = useState(false);
-  const { appState, isReady } = useAppState();
+  const { appState, isReady, reducedMotion } = useAppState();
   const introDone = useSelector(appState, isReady);
 
   useEffect(() => {
     if (!introDone) return;
+
+    if (reducedMotion) {
+      setToggle(true);
+      setToggleScreen(true);
+      return;
+    }
 
     const startDelay = setTimeout(() => {
       setToggle(true);
