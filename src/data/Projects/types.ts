@@ -8,11 +8,17 @@ export type SocialLink = {
 
 export type ProjectCategory = "game" | "website" | "demo";
 
+export type ScreenshotMeta = {
+  url: string;
+  alt: string;
+  description?: string;
+};
+
 export type ProjectDetails = {
   projectName: string;
   category: ProjectCategory;
   id?: string;
-  screenshots?: string[];
+  screenshots?: ScreenshotMeta[];
   year: string;
   status?: "in progress" | "complete";
   skills: IconName[];

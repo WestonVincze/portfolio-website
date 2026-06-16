@@ -3,10 +3,9 @@ import { LinedPaper } from "../LinedPaper";
 import { StickyNote } from "../StickyNote";
 import { ProjectDetails } from "@data/Projects/types";
 import { SkillStickers } from "../SkillStickers";
+import { ProjectScreenshotCarousel } from "@components/ProjectScreenshotCarousel";
 
-interface ProjectCardProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    ProjectDetails {}
+type ProjectCardProps = React.HTMLAttributes<HTMLDivElement> & ProjectDetails;
 
 export const ProjectCard = ({
   id,
@@ -17,6 +16,7 @@ export const ProjectCard = ({
   description,
   contributions,
   highlights,
+  screenshots,
   links,
 }: ProjectCardProps) => {
   return (
@@ -28,6 +28,12 @@ export const ProjectCard = ({
       <p role="doc-subtitle" className={styles.subheading}>
         {subheading}
       </p>
+
+      {screenshots && (
+        <section>
+          <ProjectScreenshotCarousel screenshots={screenshots} />
+        </section>
+      )}
 
       <section>
         <SkillStickers skills={skills} />

@@ -2,6 +2,18 @@
   position: relative;
 }
 
+.screenshotContainer {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.screenshotContainer img {
+  max-width: calc(50% - var(--spacing-2) / 2);
+  border: 3px solid var(--font-color);
+  border-radius: 5px;
+  filter: var(--shadow);
+}
+
 .paperclip {
   position: absolute;
   top: -35px;
@@ -24,5 +36,5 @@
   column-gap: var(--spacing-2);
   position: absolute;
   top: calc(100% - var(--line-height) * 2);
-  left: var(paper-left-gap);
+  z-index: 10001;
 }
