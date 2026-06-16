@@ -1,6 +1,6 @@
 .modal {
   position: fixed;
-  top: 0; 
+  top: 0;
   left: 0;
   padding-top: calc(var(--line-height) * 2);
   width: 100%;

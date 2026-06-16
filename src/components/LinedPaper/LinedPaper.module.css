@@ -80,6 +80,7 @@ EVERY OTHER LINE
   font-weight: bold;
 }
 
-.paper p, .paper li {
+.paper p,
+.paper li {
   text-align: justify;
 }

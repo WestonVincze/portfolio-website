@@ -43,7 +43,7 @@ export const ScreenshotModal = ({
             className={styles.modalImage}
           />
         </div>
-        
+
         <div className={styles.footer}>
           <p className={styles.title}>
             {screenshot.description ?? screenshot.alt}
