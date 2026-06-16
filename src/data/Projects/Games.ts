@@ -6,41 +6,50 @@ export const Games: ProjectDetails[] = [
     category: "game",
     id: "necro-vs-crown",
     screenshots: [
-      { url: "necro-vs-crown-screenshot-1.webp", alt: "Necro Vs Crown lobby screenshot", description: "Multiplayer lobby screen with two players connected" },
+      {
+        url: "necro-vs-crown-screenshot-1.webp",
+        alt: "Necro Vs Crown lobby screenshot",
+        description: "Multiplayer lobby screen with two players connected",
+      },
       {
         url: "necro-vs-crown-screenshot-2.webp",
         alt: "Necro gameplay screenshot 1",
-        description: "Necro gameplay - camera fixed to Necro with skeletons nearby"
+        description:
+          "Necro gameplay - camera fixed to Necro with skeletons nearby",
       },
       {
         url: "necro-vs-crown-screenshot-3.webp",
         alt: "Necro gameplay screenshot 2",
-        description: "Necro gameplay - skeletons fighting a peasant"
+        description: "Necro gameplay - skeletons fighting a peasant",
       },
       {
         url: "necro-vs-crown-screenshot-4.webp",
         alt: "Necro gameplay screenshot 3",
-        description: "Crown gameplay - showing Crown UI with a selected card"
+        description: "Crown gameplay - showing Crown UI with a selected card",
       },
       {
         url: "necro-vs-crown-screenshot-5.webp",
         alt: "Necro gameplay screenshot 4",
-        description: "Crown gameplay - after playing the previously selected card"
+        description:
+          "Crown gameplay - after playing the previously selected card",
       },
       {
         url: "necro-vs-crown-screenshot-6.webp",
         alt: "Game customization screenshot",
-        description: "Pre-game customization settings - modify starting deck allows players to choose starting cards for the Crown"
+        description:
+          "Pre-game customization settings - modify starting deck allows players to choose starting cards for the Crown",
       },
       {
         url: "necro-vs-crown-screenshot-7.webp",
         alt: "Playground scene screenshot 1",
-        description: "Custom development tools in the playground scene - showcases pause, frameAdvance, unit spawning, and state management for selected unit"
+        description:
+          "Custom development tools in the playground scene - showcases pause, frameAdvance, unit spawning, and state management for selected unit",
       },
       {
         url: "necro-vs-crown-screenshot-8.webp",
         alt: "Playground scene screenshot 2",
-        description: "Custom development tools in the playground scene - showcases systems toggle and step tool, allowing developers to customize and iterate through the systems pipeline"
+        description:
+          "Custom development tools in the playground scene - showcases systems toggle and step tool, allowing developers to customize and iterate through the systems pipeline",
       },
     ],
     year: "2026",

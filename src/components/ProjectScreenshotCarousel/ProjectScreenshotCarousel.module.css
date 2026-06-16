@@ -50,8 +50,8 @@
 /* middle image */
 .carouselItem[data-distance="1"] {
   transition-delay: 0.2s;
-  transform: translate(-25%, 25%) translateY(18px) translateX(6px)
-    scale(0.96) rotateZ(3.5deg);
+  transform: translate(-25%, 25%) translateY(18px) translateX(6px) scale(0.96)
+    rotateZ(3.5deg);
   z-index: 20;
   opacity: 0.5;
 }
@@ -59,8 +59,8 @@
 /* last image */
 .carouselItem[data-distance="2"] {
   transition-delay: 0.4s;
-  transform: translate(-25%, 25%) translateY(36px) translateX(-8px)
-    scale(0.92) rotateZ(-2deg);
+  transform: translate(-25%, 25%) translateY(36px) translateX(-8px) scale(0.92)
+    rotateZ(-2deg);
   z-index: 10;
   opacity: 0.5;
 }

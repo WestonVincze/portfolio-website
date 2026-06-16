@@ -16,11 +16,10 @@ export const ProjectScreenshotCarousel = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoScroll, setAutoScroll] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
-  const [selectedScreenshot, setSelectedScreenshot] = useState<ScreenshotMeta | null>(
-    null,
-  );
+  const [selectedScreenshot, setSelectedScreenshot] =
+    useState<ScreenshotMeta | null>(null);
   const [loadedImages, setLoadedImages] = useState<Set<number>>(
-    new Set([0, 1])
+    new Set([0, 1]),
   );
   const containerRef = useRef<HTMLDivElement>(null);
   const autoScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -38,7 +37,12 @@ export const ProjectScreenshotCarousel = ({
       clearTimeout(autoScrollTimeoutRef.current);
     }
 
-    if (isHovering || selectedScreenshot || !autoScroll || screenshots.length === 0) {
+    if (
+      isHovering ||
+      selectedScreenshot ||
+      !autoScroll ||
+      screenshots.length === 0
+    ) {
       return;
     }
 
@@ -77,7 +81,7 @@ export const ProjectScreenshotCarousel = ({
         e.preventDefault();
         setAutoScroll(false);
         setCurrentIndex((prev) =>
-          prev === 0 ? screenshots.length - 1 : prev - 1
+          prev === 0 ? screenshots.length - 1 : prev - 1,
         );
       } else if (e.key === "ArrowRight") {
         e.preventDefault();
@@ -92,9 +96,7 @@ export const ProjectScreenshotCarousel = ({
 
   const handlePrevious = () => {
     setAutoScroll(false);
-    setCurrentIndex((prev) =>
-      prev === 0 ? screenshots.length - 1 : prev - 1
-    );
+    setCurrentIndex((prev) => (prev === 0 ? screenshots.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
@@ -181,7 +183,10 @@ export const ProjectScreenshotCarousel = ({
       </div>
 
       {selectedScreenshot && (
-        <ScreenshotModal screenshot={selectedScreenshot} onClose={handleCloseScreenshot}  />
+        <ScreenshotModal
+          screenshot={selectedScreenshot}
+          onClose={handleCloseScreenshot}
+        />
       )}
     </div>
   );

@@ -27,7 +27,9 @@ export const ScreenshotModal = ({
     <div className={styles.modal} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
-          <h3 className={styles.title}>{screenshot.description ?? screenshot.alt}</h3>
+          <h3 className={styles.title}>
+            {screenshot.description ?? screenshot.alt}
+          </h3>
           <button
             className={styles.closeButton}
             onClick={onClose}
@@ -46,7 +48,6 @@ export const ScreenshotModal = ({
             className={styles.modalImage}
           />
         </div>
-
       </div>
     </div>
   );

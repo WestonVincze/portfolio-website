@@ -17,7 +17,7 @@ async function processImages() {
 
     const files = fs.readdirSync(inputDir);
     const imageFiles = files.filter((file) =>
-      /\.(jpg|jpeg|png|webp|tiff)$/i.test(file)
+      /\.(jpg|jpeg|png|webp|tiff)$/i.test(file),
     );
 
     if (imageFiles.length === 0) {
@@ -35,7 +35,7 @@ async function processImages() {
       try {
         await sharp(inputPath)
           .resize(SCREENSHOT_WIDTH, SCREENSHOT_HEIGHT, { fit: "cover" })
-          .webp({ quality: SCREENSHOT_QUALITY})
+          .webp({ quality: SCREENSHOT_QUALITY })
           .toFile(outputPath);
 
         console.log(`✓ ${file} → ${outputFileName}`);

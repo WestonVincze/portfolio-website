@@ -6,31 +6,38 @@ export const Websites: ProjectDetails[] = [
     category: "website",
     id: "credit-cruisers",
     screenshots: [
-      { url: "credit-cruisers-screenshot-1.webp", alt: "Landing page screenshot", description: "Landing page with full size Hero and CTA" },
+      {
+        url: "credit-cruisers-screenshot-1.webp",
+        alt: "Landing page screenshot",
+        description: "Landing page with full size Hero and CTA",
+      },
       {
         url: "credit-cruisers-screenshot-2.webp",
         alt: "Vehicle inventory as anonymous user screenshot",
-        description: "Vehicle inventory - viewed as an anonymous user"
+        description: "Vehicle inventory - viewed as an anonymous user",
       },
       {
         url: "credit-cruisers-screenshot-3.webp",
         alt: "Vehicle inventory as authorized admin screenshot",
-        description: "Vehicle inventory - viewed as an authenticated admin with edit features and additional vehicle data"
+        description:
+          "Vehicle inventory - viewed as an authenticated admin with edit features and additional vehicle data",
       },
       {
         url: "credit-cruisers-screenshot-4.webp",
         alt: "Pre-approval form screenshot 1",
-        description: "Pre-approval form step 1 of 7 after selecting vehicle from inventory"
+        description:
+          "Pre-approval form step 1 of 7 after selecting vehicle from inventory",
       },
       {
         url: "credit-cruisers-screenshot-5.webp",
         alt: "Pre-approval form screenshot 2",
-        description: "Pre-approval form step 7 of 7 - last step before submission"
+        description:
+          "Pre-approval form step 7 of 7 - last step before submission",
       },
       {
         url: "credit-cruisers-screenshot-6.webp",
         alt: "Pre-approval form screenshot 3",
-        description: "Pre-approval form success state after submitting form"
+        description: "Pre-approval form success state after submitting form",
       },
     ],
     year: "2025",
@@ -72,7 +79,15 @@ export const Websites: ProjectDetails[] = [
     category: "demo",
     id: "ip-address-tracker",
     year: "2025",
-    skills: ["NextJS", "React", "TypeScript", "Tailwind", "HTML", "CSS", "Vercel"],
+    skills: [
+      "NextJS",
+      "React",
+      "TypeScript",
+      "Tailwind",
+      "HTML",
+      "CSS",
+      "Vercel",
+    ],
     subheading: "Frontend Mentor Challenge",
     description:
       "A Frontend Mentor challenge which was completed as an avenue to learn and practice Tailwind CSS. The instructions were to create an input that accepts an IP address or domain and displays various geolocation data and a map. Design images and a loose style guideline was provided.",
