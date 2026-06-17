@@ -14,7 +14,7 @@ interface FolderTabsProps {
 }
 
 export const FolderTabs = ({ tabs, ...props }: FolderTabsProps) => {
-  const currentPage = usePathname();
+  const currentPage = "/" + usePathname().split('/')[1];
   const [hoverTab, setHoverTab] = useState<string | null>(null);
 
   function handleHover(path?: string): void {
@@ -28,7 +28,7 @@ export const FolderTabs = ({ tabs, ...props }: FolderTabsProps) => {
         <span key={i} style={{ zIndex: tabs.length - i + 1 }}>
           <PaperPreview
             hover={hoverTab === tab.path}
-            active={tab.path === currentPage}
+            active={currentPage === tab.path}
             zIndex={tabs.length - i + 1}
           />
           <Link

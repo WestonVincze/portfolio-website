@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./ProjectCard.module.css";
 import { LinedPaper } from "../LinedPaper";
 import { StickyNote } from "../StickyNote";
