@@ -1,5 +1,8 @@
+"use client";
+
 import styles from "./ProjectFilter.module.css";
-import React, { useState, useId } from "react";
+import React, { useId, useCallback, useMemo, useEffect, useRef } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import Select, {
   components,
   MultiValue,
@@ -74,14 +77,10 @@ const CustomOption = (props: any) => {
 };
 
 const skillsFilterStyles: StylesConfig<Option, true> = {
-  // control: (styles, { isFocused }) => ({ ...styles }),
-  // menu: (styles) => ({ ...styles }),
   placeholder: (styles) => ({ ...styles, fontStyle: "italic", color: "#333" }),
 };
 
 const categoryFilterStyles: StylesConfig<Option, false> = {
-  // control: (styles) => ({ ...styles }),
-  // menu: (styles) => ({ ...styles }),
   placeholder: (styles) => ({ ...styles, fontStyle: "italic", color: "#333" }),
 };
 
@@ -90,32 +89,81 @@ export const ProjectFilter: React.FC<{
 }> = ({ onFilterChange }) => {
   const skillsId = useId();
   const categoriesId = useId();
-
-  const [selectedSkills, setSelectedSkills] = useState<IconName[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<
-    ProjectCategory | undefined
-  >(undefined);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const prevFilterRef = useRef<FilterCriteria | null>(null);
 
   const [ref, animatedStyle, AnimatedDiv] = useInViewAnimation("div", "grow");
 
+  const selectedCategory = useMemo(
+    () => (searchParams.get("category") as ProjectCategory) || undefined,
+    [searchParams]
+  );
+
+  const selectedSkills = useMemo(() => {
+    const skillsParam = searchParams.get("skills");
+    return skillsParam ? (skillsParam.split(",").filter(Boolean) as IconName[]) : [];
+  }, [searchParams]);
+
+  useEffect(() => {
+    const currentFilter = { selectedSkills, selectedCategory };
+    const prevFilter = prevFilterRef.current;
+
+    if (
+      JSON.stringify(currentFilter) !== JSON.stringify(prevFilter)
+    ) {
+      prevFilterRef.current = currentFilter;
+      onFilterChange(currentFilter);
+    }
+  }, [searchParams, onFilterChange]);
+
+  const updateQueryParams = useCallback(
+    (newSkills: IconName[], newCategory: ProjectCategory | undefined) => {
+      const params = new URLSearchParams(searchParams.toString());
+
+      if (newCategory) {
+        params.set("category", newCategory);
+      } else {
+        params.delete("category");
+      }
+
+      if (newSkills.length > 0) {
+        params.set("skills", newSkills.join(","));
+      } else {
+        params.delete("skills");
+      }
+
+      router.push(`?${params.toString()}`, { scroll: false });
+    },
+    [router, searchParams]
+  );
+
   const handleSkillChange = (options: MultiValue<Option>) => {
-    const skills = [...options.map((option) => option.value)];
-    setSelectedSkills(skills);
-    onFilterChange({
-      selectedSkills: skills,
-      selectedCategory,
-    });
+    const newSkills = options.map((option) => option.value as IconName);
+    updateQueryParams(newSkills, selectedCategory);
   };
 
   const handleCategoryChange = (option: SingleValue<Option>) => {
-    const category = option?.value as ProjectCategory;
-    setSelectedCategory(category);
-    onFilterChange({ selectedSkills, selectedCategory: category });
+    const newCategory = (option?.value as ProjectCategory) || undefined;
+    updateQueryParams(selectedSkills, newCategory);
   };
+
+  const selectedSkillsOptions = useMemo(
+    () =>
+      selectedSkills
+        .map((skill) => skills.find((s) => s.value === skill))
+        .filter(Boolean) as Option[],
+    [selectedSkills]
+  );
+
+  const selectedCategoryOption = useMemo(
+    () => categories.find((cat) => cat.value === selectedCategory),
+    [selectedCategory]
+  );
 
   return (
     <>
-      <HighlightedHeading text="Filter Projects" id={"filter"} />
+      <HighlightedHeading text="Filter Projects" id="filter" />
       <AnimatedDiv
         id="filter-container"
         ref={ref}
@@ -134,9 +182,11 @@ export const ProjectFilter: React.FC<{
               placeholder="All"
               onChange={handleCategoryChange}
               options={categories}
+              value={selectedCategoryOption}
               styles={categoryFilterStyles}
               aria-label="Filter by project category"
               aria-labelledby="category-label"
+              isClearable
             />
           </div>
           <div className={styles.inputGroup}>
@@ -151,10 +201,12 @@ export const ProjectFilter: React.FC<{
               onChange={handleSkillChange}
               isMulti
               options={skills}
+              value={selectedSkillsOptions}
               components={{ Option: CustomOption }}
               styles={skillsFilterStyles}
               aria-label="Filter by specific skills"
               aria-labelledby="skills-label"
+              isClearable
             />
           </div>
         </div>
