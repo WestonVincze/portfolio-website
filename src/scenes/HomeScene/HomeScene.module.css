@@ -1,0 +1,17 @@
+.featuredProjects {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.featuredProjects > * {
+  width: 50%;
+}
+
+@media screen and (max-width: 600px) {
+  .featuredProjects {
+    flex-direction: column;
+  }
+  .featuredProjects > * {
+    width: 100%;
+  }
+}

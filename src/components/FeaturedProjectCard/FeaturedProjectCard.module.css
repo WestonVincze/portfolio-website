@@ -1,0 +1,55 @@
+.container {
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  background: var(--paper);
+  filter: var(--shadow);
+}
+
+.card:hover .container {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.52);
+}
+
+.card:focus-visible .container {
+  outline: 2px solid var(--font-color);
+  outline-offset: 2px;
+}
+
+.imageContainer {
+  position: relative;
+  aspect-ratio: 1200 / 800;
+  overflow: hidden;
+}
+
+.imageContainer img {
+  transition: transform 0.3s ease;
+}
+
+.card:hover .imageContainer img {
+  transform: scale(1.05);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-1);
+  gap: var(--spacing-2);
+  text-align: center;
+}
+
+.content h3 {
+  font-weight: bold;
+  margin-bottom: var(--spacing-1);
+}
+
+.skills {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: var(--line-height);
+}

@@ -8,7 +8,7 @@ const Projects = () => {
     <Container>
       <ProjectsScene />
     </Container>
-  )
+  );
 };
 
 export default Projects;
