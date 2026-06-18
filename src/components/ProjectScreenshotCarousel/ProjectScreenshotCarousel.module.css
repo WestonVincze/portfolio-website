@@ -71,7 +71,6 @@
 .carouselItem[data-distance="0"]:focus-visible {
   transition-duration: 0.2s;
   transform: translate(-5%, 15%) translateY(-5px) scale(1.02) rotateZ(0deg);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
 }
 
 .carouselItem img {
@@ -117,8 +116,8 @@
 .navButton {
   cursor: pointer;
   background-color: transparent;
-  font-weight: 600;
-  font-size: 1.2rem;
+  height: 1.2rem;
+  width: 1.2rem;
   transition: all 0.2s ease;
 }
 
@@ -168,7 +167,7 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
   .carouselContainer {
     width: 100%;
   }

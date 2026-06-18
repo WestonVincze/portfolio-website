@@ -3,12 +3,22 @@ import { usePathname } from "next/navigation";
 import { Typewriter } from "../Typewriter";
 import { useAppState } from "@providers/AppStateProvider";
 
-type Path = "/" | "/resume" | "/projects";
+const getSubheadingText = (pathname: string): string => {
+  const subHeadingText: { [key: string]: string } = {
+    "/": "Freelance Web Developer",
+    "/resume": "My Resume",
+    "/projects": "My Projects",
+  };
 
-const subHeadingText = {
-  "/": "Freelance Web Developer",
-  "/resume": "My Resume",
-  "/projects": "My Projects",
+  if (subHeadingText[pathname]) {
+    return subHeadingText[pathname];
+  }
+
+  if (pathname.startsWith("/projects/")) {
+    return "Project Details";
+  }
+
+  return "Welcome";
 };
 
 enum AnimationStates {
@@ -18,7 +28,7 @@ enum AnimationStates {
 }
 
 export const AnimatedHeading = () => {
-  const currentPage = usePathname() as Path;
+  const currentPage = usePathname();
   const [animationState, setAnimationState] = useState(AnimationStates.name);
   const { appState } = useAppState();
 
@@ -54,7 +64,7 @@ export const AnimatedHeading = () => {
       )}
       {animationState >= AnimationStates.subHeading && (
         <Typewriter
-          text={subHeadingText[currentPage]}
+          text={getSubheadingText(currentPage)}
           inlineTag={true}
           centered={true}
           onDoneTyping={() => nextAnimationState()}

@@ -5,6 +5,7 @@ import Image from "next/image";
 import styles from "./ProjectScreenshotCarousel.module.css";
 import { ScreenshotMeta } from "@data/Projects";
 import { ScreenshotModal } from "./ScreenshotModal";
+import { Icons } from "@assets/Icons";
 
 const AUTO_SCROLL_INTERVAL = 5000;
 const SWIPE_THRESHOLD = 50;
@@ -205,7 +206,7 @@ export const ProjectScreenshotCarousel = ({
           onClick={handlePrevious}
           aria-label="Previous screenshot"
         >
-          &#129032;
+          {Icons["ArrowLeft"].icon()}
         </button>
 
         <div className={styles.dotsContainer}>
@@ -225,7 +226,7 @@ export const ProjectScreenshotCarousel = ({
           onClick={handleNext}
           aria-label="Next screenshot"
         >
-          &#129034;
+          {Icons["ArrowRight"].icon()}
         </button>
       </div>
 
