@@ -3,15 +3,24 @@ import { FeaturedProjectCard } from "@components/FeaturedProjectCard";
 import { HighlightedHeading } from "@components/HighlightedHeading";
 import { WebDevWeston } from "@components/WebDevWeston";
 import styles from "./HomeScene.module.css";
+import { useInViewAnimation } from "@hooks/useInViewAnimation";
 
 export const HomeScene = () => {
+  const [ref, animatedStyles, AnimatedDiv] = useInViewAnimation(
+    "div",
+    "slideUp",
+  );
   return (
     <Container centered={true}>
       <WebDevWeston />
 
       <section>
         <HighlightedHeading id={"featured"} text={"Featured Solo Projects"} />
-        <div className={styles.featuredProjects}>
+        <AnimatedDiv
+          ref={ref}
+          style={animatedStyles}
+          className={styles.featuredProjects}
+        >
           <FeaturedProjectCard
             id="credit-cruisers"
             title="Credit Cruisers"
@@ -32,7 +41,7 @@ export const HomeScene = () => {
               alt: "Necro Vs Crown multiplayer lobby screenshot",
             }}
           />
-        </div>
+        </AnimatedDiv>
       </section>
     </Container>
   );
