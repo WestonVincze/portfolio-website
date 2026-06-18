@@ -12,6 +12,8 @@ export const Icons: Record<string, IconProps> = {
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
         viewBox="0 0 20 20"
+        width={20}
+        height={20}
       >
         <title>GitHub Icon</title>
         <path
@@ -29,6 +31,8 @@ export const Icons: Record<string, IconProps> = {
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
         viewBox="0 0 15 15"
+        width={15}
+        height={15}
       >
         <title>Linkedin icon</title>
         <path
@@ -43,7 +47,13 @@ export const Icons: Record<string, IconProps> = {
   Email: {
     title: "Email",
     icon: () => (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 20 16"
+        width={20}
+        height={16}
+      >
         <title>Email icon</title>
         <path
           stroke="currentColor"
@@ -58,7 +68,13 @@ export const Icons: Record<string, IconProps> = {
   Download: {
     title: "Download",
     icon: () => (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        width={24}
+        height={24}
+      >
         <title>Download icon</title>
         <g fill="currentColor" fillRule="evenodd" clipRule="evenodd">
           <path d="M23 22a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h20a1 1 0 0 1 1 1ZM13.31 18.688a2 2 0 0 1-2.62 0l-4.82-4.177C4.473 13.3 5.33 11 7.18 11H9V3a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v8h1.82c1.85 0 2.708 2.299 1.31 3.511l-4.82 4.177Zm-1.965-2.079a1 1 0 0 0 1.31 0L16.819 13H14.5a1.5 1.5 0 0 1-1.5-1.5V3h-2v8.5A1.5 1.5 0 0 1 9.5 13H7.18l4.165 3.61Z" />
@@ -100,7 +116,13 @@ export const Icons: Record<string, IconProps> = {
   Eye: {
     title: "View",
     icon: () => (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        width={24}
+        height={24}
+      >
         <title>Eye icon</title>
         <g fill="currentColor" fillRule="evenodd" clipRule="evenodd">
           <path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-1 3a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z" />
@@ -113,11 +135,12 @@ export const Icons: Record<string, IconProps> = {
     title: "Sun Icon",
     icon: () => (
       <svg
-        className="w-6 h-6 text-gray-800 dark:text-white"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="currentcolor"
         viewBox="0 0 20 20"
+        width={20}
+        height={20}
       >
         <path
           stroke="currentColor"
@@ -133,11 +156,12 @@ export const Icons: Record<string, IconProps> = {
     title: "Moon Icon",
     icon: () => (
       <svg
-        className="w-6 h-6 text-gray-800 dark:text-white"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="currentcolor"
         viewBox="0 0 20 20"
+        width={20}
+        height={20}
       >
         <path
           stroke="currentColor"
@@ -152,7 +176,13 @@ export const Icons: Record<string, IconProps> = {
   ArrowLeft: {
     title: "ArrowLeft",
     icon: () => (
-      <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <svg
+        viewBox="0 0 20 20"
+        width={20}
+        height={20}
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+      >
         <title>Left Arrow</title>
         <path
           stroke="currentcolor"
@@ -167,7 +197,13 @@ export const Icons: Record<string, IconProps> = {
   ArrowRight: {
     title: "ArrowRight",
     icon: () => (
-      <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <svg
+        viewBox="0 0 20 20"
+        width={20}
+        height={20}
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+      >
         <title>Right Arrow</title>
         <path
           stroke="currentcolor"

@@ -31,6 +31,10 @@
     transform 400ms ease-in-out,
     opacity 400ms ease-in-out;
 }
+.switch span svg {
+  width: 100%;
+  height: 100%;
+}
 
 /** ON **/
 .switch.on::after {

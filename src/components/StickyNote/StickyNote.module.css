@@ -18,7 +18,8 @@
 }
 .content svg {
   max-height: 100%;
-  max-width: var(--icon-width);
+  height: auto;
+  width: var(--icon-width);
 }
 
 /** SIZES *****************************************/
