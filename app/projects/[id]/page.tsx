@@ -1,5 +1,4 @@
-import { Container } from "@components/Container";
-import { ProjectCard } from "@components/ProjectCard";
+import { ProjectDetailsScene } from "@scenes/ProjectDetailsScene/ProjectDetailsScene";
 import { notFound } from "next/navigation";
 import { Projects } from "src/data/Projects/Projects";
 import type { ProjectDetails } from "src/data/Projects/types";
@@ -19,9 +18,5 @@ export default function ProjectPage({ params }: Props) {
     notFound();
   }
 
-  return (
-    <Container>
-      <ProjectCard {...project} />
-    </Container>
-  );
+  return <ProjectDetailsScene {...project} />;
 }

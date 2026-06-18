@@ -14,7 +14,7 @@ interface FolderTabsProps {
 }
 
 export const FolderTabs = ({ tabs, ...props }: FolderTabsProps) => {
-  const currentPage = "/" + usePathname().split('/')[1];
+  const currentPage = "/" + usePathname().split("/")[1];
   const [hoverTab, setHoverTab] = useState<string | null>(null);
 
   function handleHover(path?: string): void {

@@ -1,3 +1,4 @@
+"use client";
 import React, { useMemo, useEffect, useRef } from "react";
 import styles from "./LinedPaper.module.css";
 import { useAppState } from "@providers/AppStateProvider";
