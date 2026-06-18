@@ -97,21 +97,21 @@ export const ProjectFilter: React.FC<{
 
   const selectedCategory = useMemo(
     () => (searchParams.get("category") as ProjectCategory) || undefined,
-    [searchParams]
+    [searchParams],
   );
 
   const selectedSkills = useMemo(() => {
     const skillsParam = searchParams.get("skills");
-    return skillsParam ? (skillsParam.split(",").filter(Boolean) as IconName[]) : [];
+    return skillsParam
+      ? (skillsParam.split(",").filter(Boolean) as IconName[])
+      : [];
   }, [searchParams]);
 
   useEffect(() => {
     const currentFilter = { selectedSkills, selectedCategory };
     const prevFilter = prevFilterRef.current;
 
-    if (
-      JSON.stringify(currentFilter) !== JSON.stringify(prevFilter)
-    ) {
+    if (JSON.stringify(currentFilter) !== JSON.stringify(prevFilter)) {
       prevFilterRef.current = currentFilter;
       onFilterChange(currentFilter);
     }
@@ -135,7 +135,7 @@ export const ProjectFilter: React.FC<{
 
       router.push(`?${params.toString()}`, { scroll: false });
     },
-    [router, searchParams]
+    [router, searchParams],
   );
 
   const handleSkillChange = (options: MultiValue<Option>) => {
@@ -153,12 +153,12 @@ export const ProjectFilter: React.FC<{
       selectedSkills
         .map((skill) => skills.find((s) => s.value === skill))
         .filter(Boolean) as Option[],
-    [selectedSkills]
+    [selectedSkills],
   );
 
   const selectedCategoryOption = useMemo(
     () => categories.find((cat) => cat.value === selectedCategory),
-    [selectedCategory]
+    [selectedCategory],
   );
 
   return (
