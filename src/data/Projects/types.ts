@@ -27,4 +27,8 @@ export type ProjectDetails = {
   contributions?: string;
   highlights?: string[];
   links?: SocialLink[];
+  flowCharts?: {
+    title: string;
+    chart: string;
+  }[];
 };

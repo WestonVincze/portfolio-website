@@ -12,6 +12,7 @@ import type { ProjectDetails } from "src/data/Projects/types";
 import styles from "./ProjectDetailsScene.module.css";
 import Link from "next/link";
 import { Icons } from "@assets/Icons";
+import { MermaidChart } from "@components/MermaidChart";
 
 export const ProjectDetailsScene = ({
   id,
@@ -20,6 +21,7 @@ export const ProjectDetailsScene = ({
   skills,
   subheading,
   description,
+  flowCharts,
   contributions,
   highlights,
   screenshots,
@@ -98,6 +100,21 @@ export const ProjectDetailsScene = ({
           </section>
         )}
       </LinedPaper>
+
+      {flowCharts && (
+        <section>
+          {flowCharts.map((flowChart) => (
+            <MermaidChart
+              title={flowChart.title}
+              chart={flowChart.chart}
+              config={{
+                look: "handDrawn",
+                layout: "elk",
+              }}
+            />
+          ))}
+        </section>
+      )}
     </Container>
   );
 };
