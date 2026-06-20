@@ -156,6 +156,48 @@ export const Games: ProjectDetails[] = [
       "Customized formulas designed to assign numeric value to arbitrary data",
       "Detailed data visualization and development tools",
     ],
+    flowCharts: [
+      {
+        title: "Decision Making Flow Chart",
+        chart: `
+          flowchart TD
+          BS[(Baby Store)]
+          TS[(Toy Store)]
+          GS[(Grid Store)]
+          CS[(Context Store)]
+
+          C[Context]
+
+          SA["\`Static Appraisals
+          <hr />
+          _idle (default)_
+          <br />
+          _move_ <br />\`"]
+
+          DA["\`Dynamic Appraisals
+          <hr />
+          _pickup toy_
+          <br />
+          _drop toy_
+          <br />
+          _play with toy_\`"]
+
+          R[Reasoner]
+
+          Action@{ shape: diam, label: Best Action }
+          AS[Action System]
+          EA@{ shape: rounded, label: Execute Action }
+
+          %% Final Flow
+          BS & TS & GS -.-> CS -->|_build context_| C
+          DA --> R
+          C --> DA
+          C --> R
+          SA --> R
+          R -->|_evaluate appraisals_| Action --> AS --> EA
+        `,
+      },
+    ],
     links: [
       {
         icon: "GitHub",
