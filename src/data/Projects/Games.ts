@@ -193,10 +193,25 @@ export const Games: ProjectDetails[] = [
         `,
         config: {
           look: "handDrawn",
-          layout: "elk",
+          layout: "dagre",
         },
         fallbackUrl:
           "https://github.com/WestonVincze/baby-simulator/blob/master/src/docs/decisionMakingSystem.md",
+      },
+      {
+        title: "State Diagram",
+        config: {
+          look: "handDrawn",
+          layout: "dagre",
+        },
+        chart: `
+          stateDiagram-v2
+
+          [*] --> Idle
+          Idle --> Move : moveToTile
+          Move --> Play : pickupToy
+          Play --> Idle : dropToy
+        `,
       },
     ],
     links: [

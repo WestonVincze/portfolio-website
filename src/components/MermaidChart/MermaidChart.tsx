@@ -56,8 +56,9 @@ export const MermaidChart = ({
 
       try {
         await mermaid.run({ nodes: [el] });
-      } catch {
+      } catch (e: unknown) {
         setError(true);
+        // console.error("Error rendering mermaid chart:", e);
       }
     };
 
