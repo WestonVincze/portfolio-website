@@ -115,7 +115,7 @@ export const ProjectFilter: React.FC<{
       prevFilterRef.current = currentFilter;
       onFilterChange(currentFilter);
     }
-  }, [searchParams, onFilterChange]);
+  }, [searchParams, onFilterChange, selectedSkills, selectedCategory]);
 
   const updateQueryParams = useCallback(
     (newSkills: IconName[], newCategory: ProjectCategory | undefined) => {

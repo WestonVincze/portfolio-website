@@ -3,9 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./FeaturedProjectCard.module.css";
-import { ProjectDetails, ScreenshotMeta } from "@data/Projects/types";
-import { SkillStickers } from "@components/SkillStickers";
-import { LinedPaper } from "@components/LinedPaper";
+import { ScreenshotMeta } from "@data/Projects/types";
 import { StickyNote } from "@components/StickyNote";
 
 interface FeaturedProjectCardProps {

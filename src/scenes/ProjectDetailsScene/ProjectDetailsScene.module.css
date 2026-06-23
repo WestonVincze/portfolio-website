@@ -11,6 +11,15 @@
   column-gap: var(--spacing-2);
 }
 
+.back {
+  width: fit-content;
+  transition: transform 0.2s ease-in;
+}
+
+.back:hover {
+  transform: scale(1.1) translateX(5%);
+}
+
 .back svg {
   height: 0.8rem;
   margin-right: 0.5rem;

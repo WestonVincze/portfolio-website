@@ -3,9 +3,11 @@ import React, { useMemo, useEffect, useRef } from "react";
 import styles from "./LinedPaper.module.css";
 import { useAppState } from "@providers/AppStateProvider";
 import { useInViewAnimation } from "@hooks/useInViewAnimation";
+import Link from "next/link";
 
 export interface LinedPaperProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
+  titleLink?: string;
   children?: React.ReactNode;
 }
 
@@ -13,7 +15,12 @@ export interface LinedPaperProps extends React.HTMLAttributes<HTMLDivElement> {
  * @param title will be placed above the "lines" within a `header`
  * @param children if no `section` elements are passed, content will be wrapped in a section, otherwise each `section` element (except the last) will have a single line margin to "double space" content
  */
-export const LinedPaper = ({ title, children, ...props }: LinedPaperProps) => {
+export const LinedPaper = ({
+  title,
+  titleLink,
+  children,
+  ...props
+}: LinedPaperProps) => {
   const [ref, animatedStyle, AnimatedArticle] = useInViewAnimation("article");
   const { lineHeight, fontSize } = useAppState();
   const headerRef = useRef<HTMLHeadingElement>(null);
@@ -59,7 +66,9 @@ export const LinedPaper = ({ title, children, ...props }: LinedPaperProps) => {
     >
       {title && (
         <header ref={headerRef}>
-          <h3 className={styles.title}>{title}</h3>
+          <h3 className={styles.title}>
+            {titleLink ? <Link href={titleLink}>{title}</Link> : title}
+          </h3>
         </header>
       )}
       {hasSection ? children : <section>{children}</section>}

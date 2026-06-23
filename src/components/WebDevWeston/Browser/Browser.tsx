@@ -45,7 +45,7 @@ export const Browser = ({
       clearTimeout(startDelay);
       clearTimeout(screenDelay);
     };
-  }, [introDone]);
+  }, [introDone, reducedMotion]);
 
   return (
     <svg

@@ -188,7 +188,7 @@ export const Icons: Record<string, IconProps> = {
           stroke="currentcolor"
           strokeLinecap="round"
           strokeLinejoin="round"
-          stroke-width="2"
+          strokeWidth="2"
           d="M18 10H2m0 0l7-7m-7 7l7 7"
         ></path>
       </svg>
@@ -209,7 +209,7 @@ export const Icons: Record<string, IconProps> = {
           stroke="currentcolor"
           strokeLinecap="round"
           strokeLinejoin="round"
-          stroke-width="2"
+          strokeWidth="2"
           d="M2 10h16m0 0l-7-7m7 7l-7 7"
         ></path>
       </svg>
