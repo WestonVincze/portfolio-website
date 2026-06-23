@@ -156,6 +156,38 @@ export const Games: ProjectDetails[] = [
       "Customized formulas designed to assign numeric value to arbitrary data",
       "Detailed data visualization and development tools",
     ],
+    screenshots: [
+      {
+        url: "baby-simulator-screenshot-1.webp",
+        alt: "Baby Simulator main menu with buttons screenshot",
+        description:
+          "Baby Simulator main menu - detailed mode, simulation mode, and how to play buttons.",
+      },
+      {
+        url: "baby-simulator-screenshot-2.webp",
+        alt: "Baby Simulator gameplay screenshot - baby sitting on play mat with toys in toy box below and boredom meter above",
+        description:
+          "Simulation gameplay - baby sitting on empty play mat with toys in toy box below.",
+      },
+      {
+        url: "baby-simulator-screenshot-3.webp",
+        alt: "Baby Simulator gameplay screenshot 2 - baby playing with rubber ducky on play mat with remaining toys in toy box below and boredom meter above",
+        description:
+          "Simulation gameplay - baby playing with rubber ducky on play mat.",
+      },
+      {
+        url: "baby-simulator-screenshot-4.webp",
+        alt: "Baby Simulator gameplay screenshot 3 - baby playing with toy with two other toys on play mat and detailed information displayed on the right",
+        description:
+          "Detailed mode gameplay - baby playing with toy on play mat, preference and aversion values displayed on the right.",
+      },
+      {
+        url: "baby-simulator-screenshot-5.webp",
+        alt: "Baby Simulator debug tools screenshot - baby sitting on play mat with grid overlay showing each tile value",
+        description:
+          "Debug tools - grid overlay showing the final calculated value of each tile as an overlay.",
+      },
+    ],
     flowCharts: [
       {
         title: "Decision Making Flow Chart",
