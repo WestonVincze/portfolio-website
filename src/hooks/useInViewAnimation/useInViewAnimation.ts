@@ -57,7 +57,7 @@ export const useInViewAnimation = <T extends ElementType>(
   animation: AnimationType = "slideUp",
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): [RefObject<any>, SpringValues, AnimatedComponent<T>, boolean] => {
-  const [ref, isInView] = useInView({ amount: 0.25 });
+  const [ref, isInView] = useInView({ amount: 0.15 });
   const { appState } = useAppState();
   const ready = useSelector(appState, (state) =>
     state.matches(AppStates.ready),

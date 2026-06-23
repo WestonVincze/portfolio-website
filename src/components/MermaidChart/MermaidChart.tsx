@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import mermaid from "mermaid";
 import type { MermaidConfig } from "mermaid";
 import styles from "./MermaidChart.module.css";
+import { HighlightedHeading } from "@components/HighlightedHeading";
+import { useInViewAnimation } from "@hooks/useInViewAnimation";
 
 function getMermaidTheme(): "dark" | "neutral" | "base" {
   if (typeof document === "undefined") return "neutral";
@@ -16,11 +18,21 @@ interface MermaidChartProps {
   chart: string;
   title?: string;
   config?: Partial<MermaidConfig>;
+  fallbackUrl?: string;
 }
 
-export const MermaidChart = ({ chart, title, config }: MermaidChartProps) => {
+export const MermaidChart = ({
+  chart,
+  title,
+  config,
+  fallbackUrl,
+}: MermaidChartProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [error, setError] = useState(false);
+  const [ref, animatedStyle, AnimatedDiv] = useInViewAnimation(
+    "div",
+    "slideUp",
+  );
 
   useEffect(() => {
     if (!chart || !containerRef.current) return;
@@ -65,16 +77,23 @@ export const MermaidChart = ({ chart, title, config }: MermaidChartProps) => {
 
   return (
     <div className={styles.wrapper}>
-      {title && <h4 className={styles.title}>{title}</h4>}
-      <div className={styles.chart}>
+      {title && <HighlightedHeading id={title} text={title} />}
+      <AnimatedDiv ref={ref} className={styles.chart} style={animatedStyle}>
         {error ? (
-          <div className={styles.error}>Could not render diagram</div>
+          <div className={styles.error}>
+            <span>Could not render diagram</span>
+            {fallbackUrl && (
+              <a href="{fallbackUrl}" target="_blank" rel="noreferrer">
+                view on GitHub
+              </a>
+            )}
+          </div>
         ) : (
           <div ref={containerRef} className={styles.mermaid}>
             {chart}
           </div>
         )}
-      </div>
+      </AnimatedDiv>
     </div>
   );
 };

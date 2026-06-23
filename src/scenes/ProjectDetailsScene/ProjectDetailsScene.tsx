@@ -104,14 +104,7 @@ export const ProjectDetailsScene = ({
       {flowCharts && (
         <section>
           {flowCharts.map((flowChart) => (
-            <MermaidChart
-              title={flowChart.title}
-              chart={flowChart.chart}
-              config={{
-                look: "handDrawn",
-                layout: "elk",
-              }}
-            />
+            <MermaidChart key={flowChart.title} {...flowChart} />
           ))}
         </section>
       )}

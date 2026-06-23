@@ -168,19 +168,14 @@ export const Games: ProjectDetails[] = [
 
           C[Context]
 
-          SA["\`Static Appraisals
-          <hr />
-          _idle (default)_
-          <br />
-          _move_ <br />\`"]
+          SA["Static Appraisals
+            - idle (default)
+            - moveToTile"]
 
-          DA["\`Dynamic Appraisals
-          <hr />
-          _pickup toy_
-          <br />
-          _drop toy_
-          <br />
-          _play with toy_\`"]
+          DA["Dynamic Appraisals
+            - pickup toy
+            - drop toy
+            - play with toy"]
 
           R[Reasoner]
 
@@ -189,13 +184,19 @@ export const Games: ProjectDetails[] = [
           EA@{ shape: rounded, label: Execute Action }
 
           %% Final Flow
-          BS & TS & GS -.-> CS -->|_build context_| C
+          BS & TS & GS -.-> CS -->|build context| C
           DA --> R
           C --> DA
           C --> R
           SA --> R
-          R -->|_evaluate appraisals_| Action --> AS --> EA
+          R -->|evaluate appraisals| Action --> AS --> EA
         `,
+        config: {
+          look: "handDrawn",
+          layout: "elk",
+        },
+        fallbackUrl:
+          "https://github.com/WestonVincze/baby-simulator/blob/master/src/docs/decisionMakingSystem.md",
       },
     ],
     links: [
