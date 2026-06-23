@@ -39,7 +39,7 @@ export const ProjectsScene = (): JSX.Element => {
           .sort((a, b) => parseInt(b.year) - parseInt(a.year))
           .map((project, i) => (
             <section key={i}>
-              <ProjectCard {...project} id={`challenges-${project.id}`} />
+              <ProjectCard {...project} />
             </section>
           ))
       ) : (

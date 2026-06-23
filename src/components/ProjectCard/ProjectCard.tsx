@@ -25,6 +25,7 @@ export const ProjectCard = ({
     <LinedPaper
       id={id}
       title={`${projectName} (${year})`}
+      titleLink={`/projects/${id}`}
       style={links && { marginBottom: "80px" }}
     >
       <p role="doc-subtitle" className={styles.subheading}>
