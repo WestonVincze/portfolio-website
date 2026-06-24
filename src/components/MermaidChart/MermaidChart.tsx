@@ -2,10 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import mermaid from "mermaid";
-import type { MermaidConfig } from "mermaid";
-import styles from "./MermaidChart.module.css";
-import { HighlightedHeading } from "@components/HighlightedHeading";
 import { useInViewAnimation } from "@hooks/useInViewAnimation";
+import styles from "./MermaidChart.module.css";
 
 let lastTheme = "";
 
@@ -13,6 +11,7 @@ function initMermaid(theme: "dark" | "neutral" | "base") {
   if (lastTheme !== theme) {
     mermaid.initialize({
       startOnLoad: false,
+      fontFamily: "var(--montserrat)",
       theme,
       look: "handDrawn",
       layout: "dagre",
@@ -30,7 +29,7 @@ function getMermaidTheme(): "dark" | "neutral" | "base" {
 
 interface MermaidChartProps {
   chart: string;
-  title?: string;
+  title: string;
   fallbackUrl?: string;
 }
 
@@ -66,7 +65,9 @@ export const MermaidChart = ({
       initMermaid(theme);
 
       try {
-        const id = `m-${crypto.randomUUID?.() ?? Math.random().toString(36).slice(2, 11)}`;
+        const id = `m-${
+          crypto.randomUUID?.() ?? Math.random().toString(36).slice(2, 11)
+        }`;
         const { svg } = await mermaid.render(id, chart);
 
         const el = containerRef.current;
@@ -97,8 +98,8 @@ export const MermaidChart = ({
 
   return (
     <div className={styles.wrapper}>
-      {title && <HighlightedHeading id={title} text={title} />}
       <AnimatedDiv ref={ref} className={styles.chart} style={animatedStyle}>
+        {title && <h4 className={styles.title}>{title}</h4>}
         {error ? (
           <div className={styles.error}>
             <span>Could not render diagram</span>
