@@ -3,15 +3,45 @@ import { useState } from "react";
 import { ProjectCard } from "@components/ProjectCard";
 import { Container } from "@components/Container";
 import { Projects, ProjectDetails } from "@data/Projects";
-import { FilterCriteria, ProjectFilter } from "@components/ProjectFilter";
+import { FilterCriteria, ProjectFilter, SortBy } from "@components/ProjectFilter";
 
 const projects = Projects;
+
+const sortProjects = (projects: ProjectDetails[], sortBy?: SortBy): ProjectDetails[] => {
+  const sorted = [...projects];
+  switch (sortBy) {
+    case "year-asc":
+      return sorted.sort((a, b) => parseInt(a.year) - parseInt(b.year));
+    case "year-desc":
+      return sorted.sort((a, b) => parseInt(b.year) - parseInt(a.year));
+    case "name-asc":
+      return sorted.sort((a, b) => {
+        const textA = a.projectName.toLocaleUpperCase();
+        const textB = b.projectName.toLocaleUpperCase();
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
+      });
+    case "name-desc":
+      return sorted.sort((a, b) => {
+        const textA = a.projectName.toLocaleUpperCase();
+        const textB = b.projectName.toLocaleUpperCase();
+        return (textB < textA) ? -1 : (textB > textA) ? 1 : 0
+      });
+    case "default":
+    default:
+      return sorted.sort((a, b) => {
+        const orderA = a.order ?? Infinity;
+        const orderB = b.order ?? Infinity;
+        if (orderA !== orderB) return orderA - orderB;
+        return parseInt(b.year) - parseInt(a.year);
+      });
+  }
+};
 
 const filterProjects = (
   projects: ProjectDetails[],
   criteria: FilterCriteria,
 ): ProjectDetails[] => {
-  return projects.filter((project) => {
+  const filtered = projects.filter((project) => {
     const matchesSkills =
       !criteria.selectedSkills ||
       criteria.selectedSkills.every((skill) => project.skills.includes(skill));
@@ -21,11 +51,12 @@ const filterProjects = (
 
     return matchesSkills && matchedCategory;
   });
+  return sortProjects(filtered, criteria.sortBy);
 };
 
 export const ProjectsScene = (): JSX.Element => {
   const [filteredProjects, setFilteredProjects] =
-    useState<ProjectDetails[]>(projects);
+    useState<ProjectDetails[]>(sortProjects(projects));
 
   const handleFilterChange = (criteria: FilterCriteria) => {
     setFilteredProjects(filterProjects(projects, criteria));
@@ -35,9 +66,7 @@ export const ProjectsScene = (): JSX.Element => {
     <Container>
       <ProjectFilter onFilterChange={handleFilterChange} />
       {filteredProjects.length > 0 ? (
-        filteredProjects
-          .sort((a, b) => parseInt(b.year) - parseInt(a.year))
-          .map((project, i) => (
+        filteredProjects.map((project, i) => (
             <section key={i}>
               <ProjectCard {...project} />
             </section>
