@@ -4,6 +4,7 @@ export const Websites: ProjectDetails[] = [
   {
     projectName: "Credit Cruisers",
     category: "website",
+    order: 10,
     id: "credit-cruisers",
     screenshots: [
       {

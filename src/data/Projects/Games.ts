@@ -4,6 +4,7 @@ export const Games: ProjectDetails[] = [
   {
     projectName: "Necro Vs Crown",
     category: "game",
+    order: 20,
     id: "necro-vs-crown",
     screenshots: [
       {
@@ -181,6 +182,7 @@ export const Games: ProjectDetails[] = [
   {
     projectName: "Ant Simulator",
     category: "game",
+    order: 40,
     id: "ant-simulator",
     year: "2025",
     status: "in progress",
@@ -218,6 +220,7 @@ export const Games: ProjectDetails[] = [
   {
     projectName: "Baby Simulator",
     category: "game",
+    order: 30,
     id: "baby-simulator",
     year: "2025",
     status: "in progress",
