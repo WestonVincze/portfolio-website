@@ -3,11 +3,18 @@ import { useState } from "react";
 import { ProjectCard } from "@components/ProjectCard";
 import { Container } from "@components/Container";
 import { Projects, ProjectDetails } from "@data/Projects";
-import { FilterCriteria, ProjectFilter, SortBy } from "@components/ProjectFilter";
+import {
+  FilterCriteria,
+  ProjectFilter,
+  SortBy,
+} from "@components/ProjectFilter";
 
 const projects = Projects;
 
-const sortProjects = (projects: ProjectDetails[], sortBy?: SortBy): ProjectDetails[] => {
+const sortProjects = (
+  projects: ProjectDetails[],
+  sortBy?: SortBy,
+): ProjectDetails[] => {
   const sorted = [...projects];
   switch (sortBy) {
     case "year-asc":
@@ -18,13 +25,13 @@ const sortProjects = (projects: ProjectDetails[], sortBy?: SortBy): ProjectDetai
       return sorted.sort((a, b) => {
         const textA = a.projectName.toLocaleUpperCase();
         const textB = b.projectName.toLocaleUpperCase();
-        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
+        return textA < textB ? -1 : textA > textB ? 1 : 0;
       });
     case "name-desc":
       return sorted.sort((a, b) => {
         const textA = a.projectName.toLocaleUpperCase();
         const textB = b.projectName.toLocaleUpperCase();
-        return (textB < textA) ? -1 : (textB > textA) ? 1 : 0
+        return textB < textA ? -1 : textB > textA ? 1 : 0;
       });
     case "default":
     default:
@@ -55,8 +62,9 @@ const filterProjects = (
 };
 
 export const ProjectsScene = (): JSX.Element => {
-  const [filteredProjects, setFilteredProjects] =
-    useState<ProjectDetails[]>(sortProjects(projects));
+  const [filteredProjects, setFilteredProjects] = useState<ProjectDetails[]>(
+    sortProjects(projects),
+  );
 
   const handleFilterChange = (criteria: FilterCriteria) => {
     setFilteredProjects(filterProjects(projects, criteria));
@@ -67,10 +75,10 @@ export const ProjectsScene = (): JSX.Element => {
       <ProjectFilter onFilterChange={handleFilterChange} />
       {filteredProjects.length > 0 ? (
         filteredProjects.map((project, i) => (
-            <section key={i}>
-              <ProjectCard {...project} />
-            </section>
-          ))
+          <section key={i}>
+            <ProjectCard {...project} />
+          </section>
+        ))
       ) : (
         <div className={styles.noResults}>
           <p>No results found. Try changing or clearing the filters.</p>
