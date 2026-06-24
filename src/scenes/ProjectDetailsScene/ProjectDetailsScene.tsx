@@ -13,6 +13,7 @@ import styles from "./ProjectDetailsScene.module.css";
 import Link from "next/link";
 import { Icons } from "@assets/Icons";
 import { MermaidChart } from "@components/MermaidChart";
+import { HighlightedHeading } from "@components/HighlightedHeading";
 
 export const ProjectDetailsScene = ({
   id,
@@ -103,6 +104,7 @@ export const ProjectDetailsScene = ({
 
       {flowCharts && (
         <section>
+          <HighlightedHeading id="diagrams" text="Flow Charts & Diagrams" />
           {flowCharts.map((flowChart) => (
             <MermaidChart key={flowChart.title} {...flowChart} />
           ))}

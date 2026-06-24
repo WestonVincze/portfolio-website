@@ -73,6 +73,16 @@ EVERY OTHER LINE
   margin-bottom: var(--line-height);
 }
 
+.paper .title a {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+.paper .title a:hover {
+  text-decoration: underline;
+}
+
 .paper h3,
 .paper h4,
 .paper h5,

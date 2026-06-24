@@ -25,6 +25,7 @@ export type MermaidChart = {
 export type ProjectDetails = {
   projectName: string;
   category: ProjectCategory;
+  order?: number;
   id?: string;
   screenshots?: ScreenshotMeta[];
   year: string;

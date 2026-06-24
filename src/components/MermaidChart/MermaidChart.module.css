@@ -4,8 +4,8 @@
 
 .title {
   font-weight: bold;
-  margin-bottom: var(--line-height);
   text-align: center;
+  margin: var(--spacing-2) 0;
 }
 
 .chart {

@@ -7,7 +7,8 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "next"
+    "next",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -26,7 +27,6 @@
         "allowArrowFunctions": true
       }
     ],
-    "indent": ["error", 2],
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
     "react/jsx-uses-react": "off",

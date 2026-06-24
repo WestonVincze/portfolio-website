@@ -1,6 +1,44 @@
+.toggleHeader {
+  display: flex;
+  padding: var(--spacing-1) var(--spacing-2);
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-size--heading-3);
+  color: var(--font--color);
+  position: relative;
+}
+
+.arrow {
+  font-size: 0.6em;
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+
+.arrow.arrowUp {
+  transform: rotate(180deg);
+}
+
+.collapsible {
+  max-height: 500px;
+  opacity: 1;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.35s ease,
+    margin-bottom 0.35s ease;
+}
+
+.collapsible.collapsed {
+  max-height: 0;
+  opacity: 0;
+  margin-bottom: 0;
+}
+
 .filterContainer {
   width: 100%;
-  padding: var(--spacing-1) var(--spacing-2);
   margin-bottom: var(--spacing-2);
   position: relative;
 }
@@ -15,12 +53,15 @@
   background-color: var(--purple-30);
   border-radius: 5px;
   filter: var(--shadow);
+  z-index: -1;
 }
 
 .filterControls {
   display: flex;
   justify-content: space-between;
   gap: 15px;
+  padding: var(--spacing-1);
+  border-top: 1px solid var(--font-color);
 }
 
 .filterControls > * {

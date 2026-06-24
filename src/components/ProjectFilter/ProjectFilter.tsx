@@ -1,7 +1,14 @@
 "use client";
 
 import styles from "./ProjectFilter.module.css";
-import React, { useId, useCallback, useMemo, useEffect, useRef } from "react";
+import React, {
+  useId,
+  useCallback,
+  useMemo,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Select, {
   components,
@@ -12,7 +19,6 @@ import Select, {
 import { IconName } from "@assets/Icons";
 import { ProjectCategory } from "@data/Projects/types";
 import { StickyNote } from "@components/StickyNote";
-import { HighlightedHeading } from "@components/HighlightedHeading";
 import { useInViewAnimation } from "@hooks/useInViewAnimation";
 
 type Option = { value: string; label: string };
@@ -53,9 +59,25 @@ const categories = [
   { value: "demo", label: "Demos" },
 ];
 
+const sortOptions = [
+  { value: "default", label: "Default" },
+  { value: "year-desc", label: "Year (Newest)" },
+  { value: "year-asc", label: "Year (Oldest)" },
+  { value: "name-asc", label: "Name (Asc)" },
+  { value: "name-desc", label: "Name (Desc)" },
+];
+
+export type SortBy =
+  | "year-desc"
+  | "year-asc"
+  | "name-desc"
+  | "name-asc"
+  | "default";
+
 export type FilterCriteria = {
   selectedSkills?: IconName[];
   selectedCategory?: ProjectCategory;
+  sortBy?: SortBy;
 };
 
 const CustomOption = (props: any) => {
@@ -84,6 +106,10 @@ const categoryFilterStyles: StylesConfig<Option, false> = {
   placeholder: (styles) => ({ ...styles, fontStyle: "italic", color: "#333" }),
 };
 
+const sortFilterStyles: StylesConfig<Option, false> = {
+  placeholder: (styles) => ({ ...styles, fontStyle: "italic", color: "#333" }),
+};
+
 export const ProjectFilter: React.FC<{
   onFilterChange: (criteria: FilterCriteria) => void;
 }> = ({ onFilterChange }) => {
@@ -92,6 +118,9 @@ export const ProjectFilter: React.FC<{
   const searchParams = useSearchParams();
   const router = useRouter();
   const prevFilterRef = useRef<FilterCriteria | null>(null);
+
+  const [collapsed, setCollapsed] = useState(true);
+  const sortId = useId();
 
   const [ref, animatedStyle, AnimatedDiv] = useInViewAnimation("div", "grow");
 
@@ -107,18 +136,37 @@ export const ProjectFilter: React.FC<{
       : [];
   }, [searchParams]);
 
+  const selectedSort = useMemo(
+    () => (searchParams.get("sort") as SortBy) || undefined,
+    [searchParams],
+  );
+
   useEffect(() => {
-    const currentFilter = { selectedSkills, selectedCategory };
+    const currentFilter = {
+      selectedSkills,
+      selectedCategory,
+      sortBy: selectedSort,
+    };
     const prevFilter = prevFilterRef.current;
 
     if (JSON.stringify(currentFilter) !== JSON.stringify(prevFilter)) {
       prevFilterRef.current = currentFilter;
       onFilterChange(currentFilter);
     }
-  }, [searchParams, onFilterChange, selectedSkills, selectedCategory]);
+  }, [
+    searchParams,
+    onFilterChange,
+    selectedSkills,
+    selectedCategory,
+    selectedSort,
+  ]);
 
   const updateQueryParams = useCallback(
-    (newSkills: IconName[], newCategory: ProjectCategory | undefined) => {
+    (
+      newSkills: IconName[],
+      newCategory: ProjectCategory | undefined,
+      newSort?: SortBy,
+    ) => {
       const params = new URLSearchParams(searchParams.toString());
 
       if (newCategory) {
@@ -133,6 +181,12 @@ export const ProjectFilter: React.FC<{
         params.delete("skills");
       }
 
+      if (newSort && newSort !== "default") {
+        params.set("sort", newSort);
+      } else {
+        params.delete("sort");
+      }
+
       router.push(`?${params.toString()}`, { scroll: false });
     },
     [router, searchParams],
@@ -140,12 +194,17 @@ export const ProjectFilter: React.FC<{
 
   const handleSkillChange = (options: MultiValue<Option>) => {
     const newSkills = options.map((option) => option.value as IconName);
-    updateQueryParams(newSkills, selectedCategory);
+    updateQueryParams(newSkills, selectedCategory, selectedSort);
   };
 
   const handleCategoryChange = (option: SingleValue<Option>) => {
     const newCategory = (option?.value as ProjectCategory) || undefined;
-    updateQueryParams(selectedSkills, newCategory);
+    updateQueryParams(selectedSkills, newCategory, selectedSort);
+  };
+
+  const handleSortChange = (option: SingleValue<Option>) => {
+    const newSort = (option?.value as SortBy) || undefined;
+    updateQueryParams(selectedSkills, selectedCategory, newSort);
   };
 
   const selectedSkillsOptions = useMemo(
@@ -161,16 +220,33 @@ export const ProjectFilter: React.FC<{
     [selectedCategory],
   );
 
+  const selectedSortOption = useMemo(
+    () => sortOptions.find((opt) => opt.value === selectedSort),
+    [selectedSort],
+  );
+
   return (
-    <>
-      <HighlightedHeading text="Filter Projects" id="filter" />
-      <AnimatedDiv
-        id="filter-container"
-        ref={ref}
-        style={{ ...animatedStyle }}
-        className={styles.filterContainer}
+    <AnimatedDiv
+      id="filter-container"
+      ref={ref}
+      style={{ ...animatedStyle }}
+      className={styles.filterContainer}
+    >
+      <button
+        className={styles.toggleHeader}
+        onClick={() => setCollapsed(!collapsed)}
+        aria-expanded={!collapsed}
+        aria-controls="filter-controls"
       >
-        <div className={styles.filterControls}>
+        <span>Filter / Sort</span>
+        <span className={`${styles.arrow} ${!collapsed ? styles.arrowUp : ""}`}>
+          &#9660;
+        </span>
+      </button>
+      <div
+        className={`${styles.collapsible} ${collapsed ? styles.collapsed : ""}`}
+      >
+        <div id="filter-controls" className={styles.filterControls}>
           <div className={styles.inputGroup}>
             <label id="category-label" aria-label="category" htmlFor="category">
               Category
@@ -187,6 +263,7 @@ export const ProjectFilter: React.FC<{
               aria-label="Filter by project category"
               aria-labelledby="category-label"
               isClearable
+              tabIndex={collapsed ? -1 : undefined}
             />
           </div>
           <div className={styles.inputGroup}>
@@ -206,11 +283,31 @@ export const ProjectFilter: React.FC<{
               styles={skillsFilterStyles}
               aria-label="Filter by specific skills"
               aria-labelledby="skills-label"
+              tabIndex={collapsed ? -1 : undefined}
               isClearable
             />
           </div>
+          <div className={styles.inputGroup}>
+            <label id="sort-label" aria-label="sort" htmlFor={sortId}>
+              Sort By
+            </label>
+            <Select
+              id={sortId}
+              instanceId={sortId}
+              className={styles.select}
+              placeholder="Default"
+              onChange={handleSortChange}
+              options={sortOptions}
+              value={selectedSortOption}
+              styles={sortFilterStyles}
+              aria-label="Sort projects"
+              aria-labelledby="sort-label"
+              tabIndex={collapsed ? -1 : undefined}
+              isClearable={false}
+            />
+          </div>
         </div>
-      </AnimatedDiv>
-    </>
+      </div>
+    </AnimatedDiv>
   );
 };
