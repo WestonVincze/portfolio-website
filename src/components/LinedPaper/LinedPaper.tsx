@@ -67,7 +67,24 @@ export const LinedPaper = ({
       {title && (
         <header ref={headerRef}>
           <h3 className={styles.title}>
-            {titleLink ? <Link href={titleLink}>{title}</Link> : title}
+            {titleLink ? (
+              <Link href={titleLink}>
+                {title}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  viewBox="0 0 16 16"
+                  data-token-id="89"
+                  width="1.3rem"
+                  height="1.3rem"
+                >
+                  <path d="M15 1v6h-2V4.41L7.41 10 6 8.59 11.59 3H9V1zm-4 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h2V3H5a3 3 0 0 0-3 3v5a3 3 0 0 0 3 3h5a3 3 0 0 0 3-3V9h-2z"></path>
+                </svg>
+              </Link>
+            ) : (
+              title
+            )}
           </h3>
         </header>
       )}
