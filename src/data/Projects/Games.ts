@@ -52,6 +52,89 @@ export const Games: ProjectDetails[] = [
           "Custom development tools in the playground scene - showcases systems toggle and step tool, allowing developers to customize and iterate through the systems pipeline",
       },
     ],
+    flowCharts: [
+      {
+        title: "Multiplayer Networking Flow",
+        chart: `
+        sequenceDiagram
+          participant CC as Crown client
+          participant SRV as Colyseus server
+          participant NC as Necro client
+
+          note over CC,NC: ① Room lifecycle
+
+          CC->>SRV: joinOrCreate()
+          NC->>SRV: joinOrCreate()
+          SRV-->>SRV: create room on demand
+          SRV-->>CC: assign role: Crown
+          SRV-->>NC: assign role: Necro
+
+          note over CC,NC: ② Input messages (client → server)
+
+          loop Player Actions
+              CC->>SRV: play card
+              NC->>SRV: move / cast spell
+              SRV-->>SRV: validate & apply to ECS
+          end
+
+          note over CC,NC: ③ Authoritative server tick
+
+          loop Server tick - 60fps
+              SRV-->>SRV: run shared ECS systems
+              SRV-->>SRV: run server-only systems
+              SRV-->>SRV: serialize component state changes
+
+              note over CC,NC: ④ World state changes broadcast (server → clients)
+
+              SRV-->>CC: broadcast state patch
+              SRV-->>NC: broadcast state patch
+              CC-->>CC: update local state
+              NC-->>NC: update local state
+          end
+        `,
+        fallbackUrl:
+          "https://github.com/WestonVincze/necro-vs-crown/blob/master/docs/networking_flow.md",
+      },
+      {
+        title: "Monorepo Architecture Overview",
+        chart: `
+        graph TD
+          subgraph client["Client"]
+              C1[Phaser scenes]
+              C2[Client-only ECS systems]
+              C3[Input handlers]
+              C4[UI - Svelte components]
+          end
+
+          subgraph server["Server"]
+              V1[Colyseus room definitions]
+              V2[Server only ECS systems]
+              V3[Upgrade Manager]
+              V4[Dockerfile deployment]
+          end
+
+          subgraph ECS["ECS resources (BitECS)"]
+            E1[Entity creation factories]
+            E2[Component definitions]
+            E3[Shared systems]
+          end
+
+          subgraph shared["Shared"]
+              ECS
+              S1[Stores & Game Events]
+              S2[Game data]
+              S3[TypeScript types]
+              S4[Helpers]
+          end
+
+
+          client -->|imports| shared
+          server -->|imports| shared
+        `,
+        fallbackUrl:
+          "https://github.com/WestonVincze/necro-vs-crown/blob/master/docs/monorepo_architecture.md",
+      }
+    ],
     year: "2026",
     status: "in progress",
     skills: [
@@ -223,19 +306,11 @@ export const Games: ProjectDetails[] = [
           SA --> R
           R -->|evaluate appraisals| Action --> AS --> EA
         `,
-        config: {
-          look: "handDrawn",
-          layout: "dagre",
-        },
         fallbackUrl:
           "https://github.com/WestonVincze/baby-simulator/blob/master/src/docs/decisionMakingSystem.md",
       },
       {
         title: "State Diagram",
-        config: {
-          look: "handDrawn",
-          layout: "dagre",
-        },
         chart: `
           stateDiagram-v2
 
@@ -244,6 +319,8 @@ export const Games: ProjectDetails[] = [
           Move --> Play : pickupToy
           Play --> Idle : dropToy
         `,
+        fallbackUrl:
+          "https://github.com/WestonVincze/baby-simulator/blob/master/src/docs/babyState.md",
       },
     ],
     links: [
