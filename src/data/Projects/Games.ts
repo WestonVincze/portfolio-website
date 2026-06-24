@@ -133,7 +133,7 @@ export const Games: ProjectDetails[] = [
         `,
         fallbackUrl:
           "https://github.com/WestonVincze/necro-vs-crown/blob/master/docs/monorepo_architecture.md",
-      }
+      },
     ],
     year: "2026",
     status: "in progress",

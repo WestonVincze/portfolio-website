@@ -73,6 +73,59 @@ export const Websites: ProjectDetails[] = [
         url: "https://creditcruisers.ca",
       },
     ],
+    flowCharts: [
+      {
+        title: "High Level User Flow Overview",
+        chart: `
+        flowchart TD
+          USER([Visitor]) --> LAND[Landing page]
+          LAND --> CONTACT[Contact form]
+          LAND --> INV[Vehicle inventory page]
+          LAND --> QUOTE[Pre-approval form]
+
+          CONTACT -->|user data| TEMPLATE[Formatted Email Template]
+          QUOTE -->|user / vehicle data| TEMPLATE
+          INV --> SELECT[Select a vehicle]
+          SELECT -->|vehicle data| QUOTE
+
+          TEMPLATE --> CLIENT([Client inbox])
+        `,
+      },
+      {
+        title: "Vehicle Inventory Detailed User Flow",
+        chart: `
+        flowchart TD
+            %% ── AUTH CHECK ─────────────────────────────────────
+            VISIT([User visits inventory page])
+            VISIT --> AUTH{Authenticated?}
+        
+            %% ── PUBLIC PATH ─────────────────────────────────────
+            AUTH -->|No| RLS_PUB[RLS public policy]
+            RLS_PUB --> FETCH_PUB[Fetch visible listings]
+            FETCH_PUB --> CARDS["Render vehicle cards (image · make · model · odometer)"]
+        
+            %% ── ADMIN PATH ──────────────────────────────────────
+            AUTH -->|Yes| RLS_ADM[RLS admin policy]
+            RLS_ADM --> FETCH_ADM[Fetch ALL listings]
+            FETCH_ADM --> CARDS_ADM["Render vehicle cards (hidden listings · extra metadata)"]
+            CARDS_ADM --> EDIT[Edit controls]
+            EDIT --> HIDE_IMG[Toggle image visibility]
+            EDIT --> HIDE_LIST[Toggle listing visibility]
+            HIDE_IMG --> DB[(Supabase DB)]
+            HIDE_LIST --> DB
+            DB --> CARDS_ADM
+        
+            %% ── SHARED: VEHICLE SELECTION ───────────────────────
+            CARDS --> SELECT[User selects a vehicle]
+            SELECT --> FORM[Navigate to pre-approval form with vehicle data]
+            FORM --> FILL[User fills out contact info & questions]
+            FILL --> SUBMIT[Submit]
+            SUBMIT --> EMAIL[Lead email template]
+            EMAIL --> CONFIRM[Confirmation message shown to user]
+            EMAIL --> CLIENT([Client inbox])
+        `,
+      },
+    ],
   },
   {
     projectName: "IP Address Tracker",
