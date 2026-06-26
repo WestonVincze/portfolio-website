@@ -209,42 +209,50 @@ export const Games: ProjectDetails[] = [
       {
         url: "ant-simulator-screenshot-1.webp",
         alt: "Ant simulator main menu screenshot showing start simulation, how it works, and options buttons",
-        description: "Ant Simulator main menu - basic landing page with buttons to start, learn about, and modify the simulation."
+        description:
+          "Ant Simulator main menu - basic landing page with buttons to start, learn about, and modify the simulation.",
       },
       {
         url: "ant-simulator-screenshot-2.webp",
         alt: "Ant simulator gameplay screenshot showing many ants walking away from their ant hill colony",
-        description: "Ant Simulator gameplay 1 - ants leaving the colony and leaving pheromone trails to guide other ants back to their colony."
+        description:
+          "Ant Simulator gameplay 1 - ants leaving the colony and leaving pheromone trails to guide other ants back to their colony.",
       },
       {
         url: "ant-simulator-screenshot-3.webp",
         alt: "Ant simulator gameplay screenshot 2 - close up of anthill with one ant carrying food",
-        description: "Ant Simulator gameplay 2 - close up shot of the first ant to bring food back to the colony, leaving a pheromone trail to lead to the food source."
+        description:
+          "Ant Simulator gameplay 2 - close up shot of the first ant to bring food back to the colony, leaving a pheromone trail to lead to the food source.",
       },
       {
         url: "ant-simulator-screenshot-4.webp",
         alt: "Ant simulator gameplay screenshot showing a zoomed out overview of the ants and their pheromone pathways",
-        description: "Ant Simulator gameplay 3 - food source pathways beginning to naturally develop."
+        description:
+          "Ant Simulator gameplay 3 - food source pathways beginning to naturally develop.",
       },
       {
         url: "ant-simulator-screenshot-5.webp",
         alt: "Ant simulator gameplay screenshot showing a top-down zoomed out overview of the ants and their pheromone pathways",
-        description: "Ant Simulator gameplay 4 - top-down view of ants and their pheromone trails."
+        description:
+          "Ant Simulator gameplay 4 - top-down view of ants and their pheromone trails.",
       },
       {
         url: "ant-simulator-screenshot-6.webp",
         alt: "Ant simulator gameplay screenshot showing a close up of the ants walking to and from their colony with a sunset in the background",
-        description: "Ant Simulator gameplay 5 - close up view of ants crawling in and out of their colony."
+        description:
+          "Ant Simulator gameplay 5 - close up view of ants crawling in and out of their colony.",
       },
       {
         url: "ant-simulator-screenshot-7.webp",
         alt: "Ant simulator debug gizmo screenshot showing two ants and the three large spherical sensors they use to detect pheromones",
-        description: "Ant Simulator debug tools - custom gizmos to visually represent the sensors ants use to detect pheromones and steer."
+        description:
+          "Ant Simulator debug tools - custom gizmos to visually represent the sensors ants use to detect pheromones and steer.",
       },
       {
         url: "ant-simulator-screenshot-8.webp",
         alt: "Ant simulator settings page screenshot showing the available customization options",
-        description: "Ant Simulator settings - settings screen with customization options for the simulation.",
+        description:
+          "Ant Simulator settings - settings screen with customization options for the simulation.",
       },
     ],
     links: [
