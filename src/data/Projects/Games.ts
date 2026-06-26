@@ -182,27 +182,70 @@ export const Games: ProjectDetails[] = [
   {
     projectName: "Ant Simulator",
     category: "game",
-    order: 40,
+    order: 30,
     id: "ant-simulator",
     year: "2025",
-    status: "in progress",
     skills: [
       "React",
       "ThreeJS",
       "Koota",
       "TypeScript",
       "JavaScript",
+      "Tailwind",
       "HTML",
       "CSS",
     ],
     subheading: "3D Web Simulation",
     description:
-      "Ant Simulator is a browser simulation game for visualizing realistic ant behavior. Ants leave pheromones that evaporate over time to guide other ants toward food (red) or back to their nest (blue). Using sensors, ants will follow the strongest pheromone trails, reinforcing high value paths while low value paths degrade - simulating realistic pathfinding behavior.",
+      "Ant Simulator is a browser simulation game for visualizing realistic ant behavior. Ants leave pheromones that evaporate over time to guide other ants toward food (red/orange) or back to their colony (blue). Using sensors, ants will follow the strongest pheromone trails, reinforcing high value paths while low value paths degrade - simulating realistic pathfinding behavior.",
     highlights: [
       "Highly performant ECS state management using Koota",
-      "Realistic ant behavior and visualization",
-      "Mobile friendly - highly responsive and small download size",
-      "Handles hundreds of ants and thousands of pheromone nodes with little performance loss",
+      "Custom shader to draw pheromone trails, scaling opacity and size with the strength of the pheromone",
+      "Demonstrates realistic ant behavior and pathfinding",
+      "Mobile friendly - responsive with small download size",
+      "Handles hundreds of ants, thousands of pheromone nodes, and hefty calculations",
+    ],
+    screenshots: [
+      {
+        url: "ant-simulator-screenshot-1.webp",
+        alt: "Ant simulator main menu screenshot showing start simulation, how it works, and options buttons",
+        description: "Ant Simulator main menu - basic landing page with buttons to start, learn about, and modify the simulation."
+      },
+      {
+        url: "ant-simulator-screenshot-2.webp",
+        alt: "Ant simulator gameplay screenshot showing many ants walking away from their ant hill colony",
+        description: "Ant Simulator gameplay 1 - ants leaving the colony and leaving pheromone trails to guide other ants back to their colony."
+      },
+      {
+        url: "ant-simulator-screenshot-3.webp",
+        alt: "Ant simulator gameplay screenshot 2 - close up of anthill with one ant carrying food",
+        description: "Ant Simulator gameplay 2 - close up shot of the first ant to bring food back to the colony, leaving a pheromone trail to lead to the food source."
+      },
+      {
+        url: "ant-simulator-screenshot-4.webp",
+        alt: "Ant simulator gameplay screenshot showing a zoomed out overview of the ants and their pheromone pathways",
+        description: "Ant Simulator gameplay 3 - food source pathways beginning to naturally develop."
+      },
+      {
+        url: "ant-simulator-screenshot-5.webp",
+        alt: "Ant simulator gameplay screenshot showing a top-down zoomed out overview of the ants and their pheromone pathways",
+        description: "Ant Simulator gameplay 4 - top-down view of ants and their pheromone trails."
+      },
+      {
+        url: "ant-simulator-screenshot-6.webp",
+        alt: "Ant simulator gameplay screenshot showing a close up of the ants walking to and from their colony with a sunset in the background",
+        description: "Ant Simulator gameplay 5 - close up view of ants crawling in and out of their colony."
+      },
+      {
+        url: "ant-simulator-screenshot-7.webp",
+        alt: "Ant simulator debug gizmo screenshot showing two ants and the three large spherical sensors they use to detect pheromones",
+        description: "Ant Simulator debug tools - custom gizmos to visually represent the sensors ants use to detect pheromones and steer."
+      },
+      {
+        url: "ant-simulator-screenshot-8.webp",
+        alt: "Ant simulator settings page screenshot showing the available customization options",
+        description: "Ant Simulator settings - settings screen with customization options for the simulation.",
+      },
     ],
     links: [
       {
@@ -220,7 +263,7 @@ export const Games: ProjectDetails[] = [
   {
     projectName: "Baby Simulator",
     category: "game",
-    order: 30,
+    order: 40,
     id: "baby-simulator",
     year: "2025",
     status: "in progress",
