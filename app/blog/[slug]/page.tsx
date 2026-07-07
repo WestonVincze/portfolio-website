@@ -25,9 +25,7 @@ export default async function BlogPost({
 }) {
   const { slug } = await params;
   const raw = await fs.readFile(path.join(POSTS_DIR, `${slug}.mdx`), "utf8");
-  console.log(raw);
   const { content, data } = matter(raw);
-  console.log(content);
 
   return (
     <Container>

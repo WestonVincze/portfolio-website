@@ -28,9 +28,7 @@ export const Polaroid = ({
         height={height}
         className={styles.photo}
       />
-      {caption && (
-        <figcaption className={styles.caption}>{caption}</figcaption>
-      )}
+      {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
     </figure>
   );
-}
+};

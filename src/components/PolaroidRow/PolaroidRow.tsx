@@ -7,4 +7,4 @@ import styles from "./PolaroidRow.module.css";
  */
 export const PolaroidRow = ({ children }: { children: ReactNode }) => {
   return <div className={styles.row}>{children}</div>;
-}
+};
