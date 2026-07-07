@@ -1,0 +1,72 @@
+.polaroid {
+  --polaroid-bg: #fdfdf8;
+  --polaroid-edge: rgba(0, 0, 0, 0.08);
+
+  display: inline-flex;
+  flex-direction: column;
+  margin: 1.5rem 0.75rem;
+  padding: 0.75rem 0.75rem 0.5rem;
+  background: var(--polaroid-bg);
+  border: 1px solid var(--polaroid-edge);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    0 6px 14px rgba(0, 0, 0, 0.16);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.photo {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  background: #222;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.35);
+}
+
+.caption {
+  min-height: 2.75rem;
+  padding: 0.6rem 0.25rem 0.25rem;
+  font-family: var(--font-handwriting, "Segoe Script", "Bradley Hand", cursive);
+  font-size: 1.05rem;
+  line-height: 1.2;
+  color: #3a3a3a;
+  text-align: center;
+}
+
+.polaroid:not(:has(.caption)) {
+  padding-bottom: 2.75rem;
+}
+
+.left {
+  transform: rotate(-2deg);
+}
+
+.right {
+  transform: rotate(1.6deg);
+}
+
+.none {
+  transform: none;
+}
+
+/* photos straighten up when you look at them closely */
+.polaroid:hover {
+  transform: rotate(0deg) translateY(-2px);
+  box-shadow:
+    0 2px 3px rgba(0, 0, 0, 0.12),
+    0 10px 22px rgba(0, 0, 0, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .polaroid {
+    transition: none;
+  }
+  .polaroid:hover {
+    transform: inherit;
+  }
+}
+
+@media (max-width: 560px) {
+  .polaroid {
+    margin: 1.25rem auto;
+  }
+}

@@ -1,0 +1,12 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--spacing-1);
+  margin: var(--spacing-2) 0;
+}
+
+.row > *:nth-child(even) {
+  margin-top: var(--spacing-1);
+}
