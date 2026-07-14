@@ -60,7 +60,7 @@
     "prettier": "^3.0.3",
     "puppeteer": "^24.19.0",
     "sharp": "^0.35.1",
-    "typescript": "^4.9.3",
+    "typescript": "^5.9.3",
     "url-loader": "^4.1.1"
   },
   "overrides": {
